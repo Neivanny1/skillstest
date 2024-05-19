@@ -6,7 +6,7 @@ All challenge models reside here
 '''
 class Participant(models.Model):
     '''
-    Defines a class participant
+    Defines a class participants
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = models.ImageField(upload_to="profile_pic/participant", null=True, blank=True)

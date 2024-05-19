@@ -61,7 +61,7 @@ ROOT_URLCONF = 'skillstest.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,6 +130,7 @@ STATIC_DIR,
  ]
 
 LOGIN_REDIRECT_URL='/afterlogin'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #for contact us give your gmail id and password
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'

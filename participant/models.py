@@ -10,9 +10,8 @@ class Participant(models.Model):
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = models.ImageField(upload_to="profile_pic/participant", null=True, blank=True)
-    bio = models.TextField(max_length=500, blank=True)
     address = models.CharField(max_length=60)
-    phone = models.CharField(max_length=15, null=False)
+    mobile = models.CharField(max_length=20,null=False)
 
     @property
     def get_name(self):

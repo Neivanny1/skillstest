@@ -3,3 +3,4 @@ Django
 django-widget-tweaks
 pytz
 sqlparse
+Pillow

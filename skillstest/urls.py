@@ -1,31 +1,17 @@
-"""skillstest URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# skillstest/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from challenge import views
-from django.contrib.auth.views import LogoutView, LoginView
+from challenge import views as challenge_views
+from django.contrib.auth.views import LogoutView
+
 
 urlpatterns = [
-    path('',views.home_view,name=''),
+    path('', challenge_views.home_view, name='home'),
     path('admin/', admin.site.urls),
-    path('participant/',include('participant.urls')),
-
-    path('',views.home_view,name=''),
-    path('logout', LogoutView.as_view(template_name='logout.html'),name='logout'),
-    path('aboutus', views.aboutus_view),
-    # path('contactus', views.contactus_view),
-    path('afterlogin', views.afterlogin_view,name='afterlogin'),
+    path('participant/', include('participant.urls')),
+    path('challenge/', include('challenge.urls')),
+    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
+    path('afterlogin/', challenge_views.afterlogin_view, name='afterlogin'),
+    path('contactus/', challenge_views.contactus_view, name='contactus'),
+    path('aboutus/', challenge_views.aboutus_view, name='aboutus'),
 ]

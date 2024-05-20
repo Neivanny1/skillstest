@@ -56,7 +56,10 @@
         {% render_field participantForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
       </div>
     </div>
-  <button type="submit" class="btn btn-primary">Sign Up</button>
+  <button type="submit" class="btn btn-primary">Sign Up</button> <br>
+  <p>Already have an account?
+    <a href="participantlogin" class="btn btn-primary btn-lg btn-info"><i class="fa fa-sign-in"></i>Login</a>
+  </p>
 </form>
 <br><br>
 {% include "footer.html" %}

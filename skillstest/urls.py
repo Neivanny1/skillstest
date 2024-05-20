@@ -23,8 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('participant/',include('participant.urls')),
 
-
     path('',views.home_view,name=''),
     path('logout', LogoutView.as_view(template_name='logout.html'),name='logout'),
+    path('aboutus', views.aboutus_view),
+    # path('contactus', views.contactus_view),
     path('afterlogin', views.afterlogin_view,name='afterlogin'),
 ]

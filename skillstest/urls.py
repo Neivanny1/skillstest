@@ -15,11 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib import admin
 from challenge import views
 from django.contrib.auth.views import LogoutView, LoginView
 
 urlpatterns = [
+    path('',views.home_view,name=''),
     path('admin/', admin.site.urls),
-     path('participant/',include('participant.urls')),
+    path('participant/',include('participant.urls')),
+
+
+    path('',views.home_view,name=''),
+    path('logout', LogoutView.as_view(template_name='logout.html'),name='logout'),
+    path('afterlogin', views.afterlogin_view,name='afterlogin'),
 ]

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+    <title>
+        {% block title %} 
+        Skillstest | 
+        {% endblock %}
+    </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/participant/base.css' %}">
+</head>
+<body>
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+    <label for="check">
+      <i style="left: 200px;margin-top: 17px;"class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>Skillstest</h3>
+    </div>
+    <div class="right_area">
+      <!-- <a href="/logout" class="logout_btn">Logout</a> -->
+      <a href="#" class="logout_btn">Logout</a>
+    </div>
+  </header>
+  <!--header area end-->
+  <!--sidebar start-->
+  <div class="sidebar">
+    <center>
+      <img src="{% static 'image/student.png' %}" class="profile_image" alt="Not found">
+      <h4>{{request.user.first_name}}</h4>
+      <h6 style="color: rgb(255, 255, 255);">( Student )</h6>
+    </center>
+    <!-- <a href="/student/student-dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+    <a href="/student/student-exam"><i class="fas fa-book"></i><span>Exam</span></a>
+    <a href="/student/student-marks"><i class="fas fa-sort-numeric-up"></i><span>Marks</span></a> -->
+    <a href="#"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+    <a href="#"><i class="fas fa-book"></i><span>Exam</span></a>
+    <a href="#"><i class="fas fa-sort-numeric-up"></i><span>Marks</span></a>
+  </div>
+  <!--sidebar end-->
+  <!--content start-->
+  <div class="content">
+    <br><br><br><br><br>
+    {% block content %}
+
+    {% endblock content %}
+    <br><br><br>
+    {% include "footer.html" %}
+  </div>
+  <!--content end-->
+</body>
+</html>

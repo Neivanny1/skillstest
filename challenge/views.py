@@ -21,3 +21,6 @@ def afterlogin_view(request):
     #         return render(request,'teacher/teacher_wait_for_approval.html')
     # else:
     #     return redirect('admin-dashboard')
+
+def aboutus_view(request):
+    return render(request,'aboutus.html')

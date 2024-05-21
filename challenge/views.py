@@ -7,7 +7,7 @@ from . import forms, models
 from django.conf import settings
 from django.urls import reverse
 from facilitator.views import is_facilitator
-from facilitator import models as TMODEL
+from facilitator import models as FMODEL
 
 '''
 Handles home page display
@@ -24,7 +24,7 @@ def afterlogin_view(request):
         return redirect(url)
                 
     elif is_facilitator(request.user):
-        accountapproval = TMODEL.Teacher.objects.all().filter(user_id=request.user.id,status=True)
+        accountapproval = FMODEL.Facilitator.objects.all().filter(user_id=request.user.id,status=True)
         if accountapproval:
             return redirect('facilitator/dashboard')
         else:

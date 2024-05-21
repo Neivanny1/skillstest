@@ -10,6 +10,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('participant/', include('participant.urls')),
     path('challenge/', include('challenge.urls')),
+    path('facilitator/', include('facilitator.urls')),
+
+
     path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('afterlogin/', challenge_views.afterlogin_view, name='afterlogin'),
     path('contactus/', challenge_views.contactus_view, name='contactus'),

@@ -2,9 +2,12 @@ from django.shortcuts import render
 from .import forms
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required,user_passes_test
+from challenge import models as QMODEL
+from participant import models as FMODEL
 
 # Create your views here.
-def teacher_signup_view(request):
+def facilitator_signup_view(request):
     userForm=forms.FacilitatorUserForm()
     facilitatorForm=forms.FacilitatorForm()
     mydict={'userForm':userForm,'facilitatorForm':facilitatorForm}
@@ -25,3 +28,13 @@ def teacher_signup_view(request):
 
 def is_facilitator(user):
     return user.groups.filter(name='FACILITATOR').exists()
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_facilitator)
+def facilitator_dashboard_view(request):
+    dict={
+    'total_speciality':QMODEL.Speciality.objects.all().count(),
+    'total_question':QMODEL.Question.objects.all().count(),
+    'total_participants':FMODEL.Participant.objects.all().count()
+    }
+    return render(request,'facilitator/dashboard.html',context=dict)

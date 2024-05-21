@@ -1,67 +1,63 @@
 <!DOCTYPE html>
 {% load widget_tweaks %}
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <style>
-
-        form{
-           margin: 50px; 
-          
+        form {
+            margin: 50px;
         }
-
     </style>
-  </head>
-  <body>
+</head>
+<body>
     {% include "navbar.html" %}
-<br><br><br>
-<h3 style="text-align: center;color: red;">PARTCIPANT SIGNUP</h3>
-<form method="POST" autocomplete="off" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="username">Username</label>
-        {% render_field userForm.username|attr:'required:true'  class="form-control" placeholder="username" %}
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Password</label>
-        {% render_field userForm.password|attr:'required:true'  class="form-control" placeholder="password" %}
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="first_name">First Name</label>
-        {% render_field userForm.first_name|attr:'required:true'  class="form-control" placeholder="First Name" %}
-      </div>
-      <div class="form-group col-md-6">
-        <label for="last_name">Last Name</label>
-        {% render_field userForm.last_name|attr:'required:true'  class="form-control" placeholder="Last Name" %}
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="mobile">Mobile</label>
-        {% render_field participantForm.mobile|attr:'required:true'  class="form-control" placeholder="Mobile" %}
-      </div>
-      <div class="form-group col-md-6">
-        <label for="address">Address</label>
-        {% render_field participantForm.address|attr:'required:true'  class="form-control" placeholder="Address" %}
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <label for="profile_pic">Profile Picture</label>
-        {% render_field participantForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
-      </div>
-    </div>
-  <button type="submit" class="btn btn-primary">Sign Up</button> <br>
-  <p>Already have an account?
-    <a href="participantlogin" class="btn btn-primary btn-lg btn-info"><i class="fa fa-sign-in"></i>Login</a>
-  </p>
-</form>
-<br><br>
-{% include "footer.html" %}
-  </body>
+    <br><br><br>
+    <h3 style="text-align: center; color: red;">PARTICIPANT SIGNUP</h3>
+    <form action="{% url 'participantsignup' %}" method="POST" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="username">Username</label>
+                {% render_field userForm.username|attr:'required:true' class="form-control" placeholder="username" %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                {% render_field userForm.password|attr:'required:true' class="form-control" placeholder="password" %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="first_name">First Name</label>
+                {% render_field userForm.first_name|attr:'required:true' class="form-control" placeholder="First Name" %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="last_name">Last Name</label>
+                {% render_field userForm.last_name|attr:'required:true' class="form-control" placeholder="Last Name" %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="mobile">Mobile</label>
+                {% render_field participantForm.mobile|attr:'required:true' class="form-control" placeholder="Mobile" %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="address">Address</label>
+                {% render_field participantForm.address|attr:'required:true' class="form-control" placeholder="Address" %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="profile_pic">Profile Picture</label>
+                {% render_field participantForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <br>
+        <p>Already have an account?
+            <a href="{% url 'participantlogin' %}" class="btn btn-primary btn-lg btn-info"><i class="fa fa-sign-in"></i> Login</a>
+        </p>
+    </form>
+    <br><br>
+    {% include "footer.html" %}
+</body>
 </html>

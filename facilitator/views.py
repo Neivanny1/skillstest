@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from challenge import models as QMODEL
 from participant import models as FMODEL
 from datetime import datetime
+from django.urls import reverse
 # Create your views here.
 def facilitatorhome(request):
     current_time = datetime.now()
@@ -32,8 +33,9 @@ def facilitator_signup_view(request):
             facilitator.save()
             my_facilitator_group = Group.objects.get_or_create(name='FACILITATOR')
             my_facilitator_group[0].user_set.add(user)
-        return HttpResponseRedirect('facilitatorlogin')
+        return HttpResponseRedirect(reverse('facilitatorlogin'))
     return render(request, 'facilitator/signup.html', context=mydict)
+
 
 def is_facilitator(user):
     return user.groups.filter(name='FACILITATOR').exists()

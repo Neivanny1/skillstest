@@ -3,9 +3,11 @@ from django.http import HttpResponseRedirect
 from participant.views import is_participant
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from . import forms,models
+from . import forms, models
 from django.conf import settings
 from django.urls import reverse
+from facilitator.views import is_facilitator
+from facilitator import models as FMODEL
 
 '''
 Handles home page display
@@ -21,12 +23,12 @@ def afterlogin_view(request):
         url = reverse('participantdashboard')
         return redirect(url)
                 
-    # elif is_teacher(request.user):
-    #     accountapproval=TMODEL.Teacher.objects.all().filter(user_id=request.user.id,status=True)
-    #     if accountapproval:
-    #         return redirect('teacher/teacher-dashboard')
-    #     else:
-    #         return render(request,'teacher/teacher_wait_for_approval.html')
+    elif is_facilitator(request.user):
+        accountapproval = FMODEL.Facilitator.objects.all().filter(user_id=request.user.id,status=True)
+        if accountapproval:
+            return redirect('facilitator/dashboard')
+        else:
+            return render(request,'facilitator/approval.html')
     # else:
     #     return redirect('admin-dashboard')
 

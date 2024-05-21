@@ -5,8 +5,17 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required,user_passes_test
 from challenge import models as QMODEL
 from participant import models as FMODEL
-
+from datetime import datetime
 # Create your views here.
+def facilitatorhome(request):
+    current_time = datetime.now()
+    context = {
+        'current_time': current_time
+    }
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('afterlogin')
+    return render(request,'facilitator/home.html', context)
+
 def facilitator_signup_view(request):
     userForm=forms.FacilitatorUserForm()
     facilitatorForm=forms.FacilitatorForm()

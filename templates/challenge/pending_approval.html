@@ -1,4 +1,7 @@
 {% extends 'challenge/base.html' %}
+{% block title %}
+Pending Approvals
+{% endblock %}
 {% block content %}
 {% load static %}
 <head>
@@ -44,7 +47,7 @@
         <td>{{ details.address }}</td>
         <!-- <td><a class="btn btn-primary btn-xs" href="{% url 'approve-teacher' details.id  %}"><span class="glyphicon glyphicon-ok"></span></a></td>
         <td><a class="btn btn-danger btn-xs" href="{% url 'reject-teacher' details.id  %}"><span class="	glyphicon glyphicon-remove"></span></a></td> -->
-        <td><a class="btn btn-primary btn-xs" href="{% url 'approve_pending' %}"><span class="glyphicon glyphicon-ok"></span></a></td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'approvepending' %}"><span class="glyphicon glyphicon-ok"></span></a></td>
         <td><a class="btn btn-danger btn-xs" href="#"><span class="	glyphicon glyphicon-remove"></span></a></td>
       </tr>
       {% endfor %}

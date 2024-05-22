@@ -21,5 +21,5 @@ urlpatterns = [
 
     #Handling admin tasks
     path('checkpending/', views.check_pending_approval_view, name='checkpending'),
-    path('approvepending', views.approve_pending_view, name='approvepending'),
+    path('approvepending/<int:pk>', views.approve_pending_view, name='approvepending'),
 ]

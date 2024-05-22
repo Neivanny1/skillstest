@@ -49,13 +49,12 @@ Handles all logins
 '''
 def afterlogin_view(request):
     if is_participant(request.user):
-        url = reverse('participantdashboard')
-        return redirect(url)
+        return redirect(reverse('participantdashboard'))
                 
     elif is_facilitator(request.user):
         accountapproval = FMODEL.Facilitator.objects.all().filter(user_id=request.user.id,status=True)
         if accountapproval:
-            return redirect('facilitator/dashboard')
+            return redirect(reverse('facilitatordashboard'))
         else:
             return render(request,'facilitator/approval.html')
     elif is_admin(request.user):

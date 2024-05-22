@@ -18,4 +18,8 @@ urlpatterns = [
     path('afterlogin/', views.afterlogin_view, name='afterlogin'),
     path('contactus/', views.contactus_view, name='contactus'),
     path('aboutus/', views.aboutus_view, name='aboutus'),
+
+    #Handling admin tasks
+    path('checkpending/', views.check_pending_approval_view, name='checkpending'),
+    path('approvepending', views.approve_pending_view, name='approvepending'),
 ]

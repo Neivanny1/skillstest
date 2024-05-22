@@ -10,6 +10,7 @@ from facilitator.views import is_facilitator
 from facilitator import models as FMODEL
 from participant.views import is_participant
 from participant import models as PMODEL
+from django.contrib.auth.decorators import login_required
 
 '''
 Handles home page display
@@ -24,10 +25,12 @@ Admin home view
 '''
 def admin_home_view(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('afterlogin'))
-    return HttpResponseRedirect(reverse('adminlogin'))
+        return redirect('afterlogin')
+    else:
+        return redirect('adminlogin')
 
-
+def is_admin(user):
+    return user.is_superuser
 '''
 Admin dashboard
 '''
@@ -55,8 +58,8 @@ def afterlogin_view(request):
             return redirect('facilitator/dashboard')
         else:
             return render(request,'facilitator/approval.html')
-    else:
-        return redirect('adminhome')
+    elif is_admin(request.user):
+        return redirect('admindash')
 
 '''
 Handles aboout information
@@ -78,3 +81,37 @@ def contactus_view(request):
             send_mail(str(name)+' || '+str(email),message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
             return render(request, 'onsend.html')
     return render(request, 'contact.html', {'form':sub})
+
+
+'''
+Check any pending approvals
+'''
+@login_required(login_url='adminlogin')
+def check_pending_approval_view(request):
+    pending_accounts = FMODEL.Facilitator.objects.all().filter(status=False)
+    context = {
+        'pending_accounts': pending_accounts
+    }
+    return render(request, 'challenge/pending_approval.html', context)
+
+
+'''
+Handles approving pending aprovals
+'''
+@login_required(login_url='adminlogin')
+def approve_pending_view(request, pk):
+    f_pay = forms.FacilitatorPayForm()
+    if request.method == 'POST':
+        f_pay = forms.FacilitatorPayForm(request.POST)
+        if f_pay.is_valid():
+            f = FMODEL.Facilitator.objects.get(id=pk)
+            f.payout = f_pay.cleaned_data['payout']
+            f.status = True
+            f.save()
+        else:
+            print('Form is invalid')
+        return HttpResponseRedirect(reverse('checkpending'))
+    context = {
+        'f_pay': f_pay
+        }
+    return render(request, 'challenge/payout.html', context)

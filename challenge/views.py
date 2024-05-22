@@ -8,16 +8,42 @@ from django.conf import settings
 from django.urls import reverse
 from facilitator.views import is_facilitator
 from facilitator import models as FMODEL
+from participant.views import is_participant
+from participant import models as PMODEL
 
 '''
 Handles home page display
 '''
 def home_view(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect('afterlogin')  
+        return HttpResponseRedirect(reverse('afterlogin'))  
     return render(request,'index.html')
 
+'''
+Admin home view
+'''
+def admin_home_view(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('afterlogin'))
+    return HttpResponseRedirect(reverse('adminlogin'))
 
+
+'''
+Admin dashboard
+'''
+def admin_dashboard_view(request):
+    dict = {
+        'total_participant': PMODEL.Participant.objects.all().count(),
+        'total_facilitator': FMODEL.Facilitator.objects.all().filter(status=True).count(),
+        'total_speciality': models.Speciality.objects.all().count(),
+        'total_question': models.Question.objects.all().count(),
+    }
+    return render(request, 'challenge/adminDash.html', context=dict)
+
+
+'''
+Handles all logins
+'''
 def afterlogin_view(request):
     if is_participant(request.user):
         url = reverse('participantdashboard')
@@ -29,8 +55,8 @@ def afterlogin_view(request):
             return redirect('facilitator/dashboard')
         else:
             return render(request,'facilitator/approval.html')
-    # else:
-    #     return redirect('admin-dashboard')
+    else:
+        return redirect('adminhome')
 
 '''
 Handles aboout information

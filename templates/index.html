@@ -32,16 +32,16 @@
         <th colspan="2" class="section-heading">Signup As</th>
       </tr>
       <tr>
-          <td> <a href="participant/participantsignup" class="btn btn-primary btn-lg" style="padding-right: 35px;"><i class="fa fa-user-plus" aria-hidden="true"></i>Participant</a></td>
-          <td><a href="facilitator/facilitatorsignup" class="btn btn-primary btn-lg" style="padding-right: 35px;"><i class="fa fa-user-plus" aria-hidden="true"></i>Facilitator</a></td>
+          <td> <a href="{% url 'participantsignup' %}" class="btn btn-primary btn-lg" style="padding-right: 35px;"><i class="fa fa-user-plus" aria-hidden="true"></i>Participant</a></td>
+          <td><a href="{% url 'facilitatorsignup' %}" class="btn btn-primary btn-lg" style="padding-right: 35px;"><i class="fa fa-user-plus" aria-hidden="true"></i>Facilitator</a></td>
       </tr>
       <td colspan="4" class="section-heading">OR</td>
       <tr>
         <th colspan="2" class="section-heading">Login As</th>
       </tr>
       <tr>
-          <td><a href="participant/participantlogin" class="btn btn-primary btn-lg btn-info" style="padding-right: 35px;"><i class="fa fa-sign-in" aria-hidden="true"></i>Participant</a> </td>
-          <td><a href="facilitator/facilitatorlogin" class="btn  btn-primary btn-lg btn-info" style="padding-right: 35px;"><i class="fa fa-sign-in" aria-hidden="true"></i>Facilitator</a> </td>
+          <td><a href="{% url 'participantlogin' %}" class="btn btn-primary btn-lg btn-info" style="padding-right: 35px;"><i class="fa fa-sign-in" aria-hidden="true"></i>Participant</a> </td>
+          <td><a href="{% url 'facilitatorlogin' %}" class="btn  btn-primary btn-lg btn-info" style="padding-right: 35px;"><i class="fa fa-sign-in" aria-hidden="true"></i>Facilitator</a> </td>
       </tr>
   </table>
     <br><br><br>

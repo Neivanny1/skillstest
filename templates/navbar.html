@@ -23,7 +23,7 @@
     }
   </style>
     <title>
-      {% block title %} skillstest | Home {% endblock %}
+      {% block title %} Skillstest | Home {% endblock %}
     </title>
 </head>
 <body>
@@ -37,17 +37,14 @@
         <div class="navbar-nav">
           <a style="
           padding-left: 30px;
-      " href="/" class="nav-item nav-link active">Home</a>
-          <!-- <a href="/teacher/teacherclick" class="nav-item nav-link">Teacher</a>
-          <a href="/student/studentclick" class="nav-item nav-link">Student</a>
-          <a href="/adminclick" class="nav-item nav-link">Admin</a> -->
-          <a href="/participant/participanthome" class="nav-item nav-link">Participant</a>
-          <a href="/facilitator/facilitatorhome" class="nav-item nav-link">Facilitator</a>
-          <a href="#" class="nav-item nav-link">Admin</a>
+      " href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+          <a href="{% url 'participanthome' %}" class="nav-item nav-link">Participant</a>
+          <a href="{% url 'facilitatorhome' %}" class="nav-item nav-link">Facilitator</a>
+          <a href="{% url 'adminhome' %}" class="nav-item nav-link">Admin</a>
         </div>
         <div class="navbar-nav">
-          <a href="/contactus" class="nav-item nav-link">Contact Us</a>
-          <a href="/aboutus" class="nav-item nav-link">About Us</a>
+          <a href="{% url 'contactus' %}" class="nav-item nav-link">Contact Us</a>
+          <a href="{% url 'aboutus' %}" class="nav-item nav-link">About Us</a>
         </div>
       </div>
     </nav>

@@ -4,10 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>
-    {% block title %} 
-     skillstest |
-    {% endblock %}
-</title>
+    Skillstest | {% block title %}{% endblock %}
+  </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
@@ -19,7 +17,7 @@
       <i style="left: 200px;margin-top: 17px;"class="fas fa-bars" id="sidebar_btn"></i>
     </label>
     <div class="left_area">
-      <h3>Quiz Whiz</h3>
+      <h3>Skillstest</h3>
     </div>
     <div class="right_area">
       <a href="{% url 'logout' %}" class="logout_btn">Logout</a>
@@ -37,8 +35,8 @@
     <a href="/admin-course"><i class="fas fa-book"></i><span>Courses</span></a>
     <a href="/admin-question"><i class="fas fa-question-circle"></i><span>Questions</span></a> -->
     <a href="#"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
-    <a href="#"><i class="fas fa-chalkboard-teacher"></i><span>Teacher</span></a>
-    <a href="#"><i class="fas fa-user-graduate"></i><span>Student</span></a>
+    <a href="#"><i class="fas fa-chalkboard-teacher"></i><span>Facilitators</span></a>
+    <a href="#"><i class="fas fa-user-graduate"></i><span>Participants</span></a>
     <a href="#"><i class="fas fa-book"></i><span>Courses</span></a>
     <a href="#"><i class="fas fa-question-circle"></i><span>Questions</span></a>
   </div>

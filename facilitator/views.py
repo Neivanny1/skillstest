@@ -5,6 +5,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required,user_passes_test
 from challenge import models as QMODEL
 from participant import models as FMODEL
+from challenge import forms as QFORM
 from datetime import datetime
 from django.urls import reverse
 # Create your views here.
@@ -40,7 +41,7 @@ def facilitator_signup_view(request):
 def is_facilitator(user):
     return user.groups.filter(name='FACILITATOR').exists()
 
-@login_required(login_url='teacherlogin')
+@login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
 def facilitator_dashboard_view(request):
     dict={
@@ -49,3 +50,33 @@ def facilitator_dashboard_view(request):
     'total_participants':FMODEL.Participant.objects.all().count()
     }
     return render(request,'facilitator/dashboard.html',context=dict)
+
+
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def add_or_view_challenge_view(request):
+    return render(request,'facilitator/add_or_view.html')
+'''
+Adding challenges
+'''
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def add_challenge_view(request):
+    specilaityForm = QFORM.SpecialityForm()
+    if request.method == 'POST':
+        specilaityForm = QFORM.SpecialityForm(request.POST)
+        if specilaityForm.is_valid():        
+            specilaityForm.save()
+        else:
+            print("form is invalid")
+        return HttpResponseRedirect(reverse('viewchallenge'))
+    context = {
+        'specialityForm': specilaityForm
+    }
+    return render(request,'facilitator/add_challenge.html', context)
+
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def viewchallengeview(request):
+    challenges = QMODEL.Speciality.objects.all()
+    return render(request,'facilitator/challenge_view.html',{'challenges':challenges})

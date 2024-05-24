@@ -121,14 +121,45 @@ TODO:
 @login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
 def viewquestionsview(request):
-    question = QMODEL.Question.objects.all()
-    return render(request,'facilitator/questions_view.html',{'question':question})
+    speciality = QMODEL.Speciality.objects.all()
+    return render(request,'facilitator/questions_view.html',{'speciality':speciality})
 
 '''
 Viewing individual question
 '''
 @login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
-def view_question_view(request,pk):
-    question =QMODEL.Question.objects.all().filter(speciality_id=pk)
-    return render(request,'facilitator/question_view.html',{'question':question})
+def view_question_view(request, pk):
+    questions = QMODEL.Question.objects.all().filter(speciality_id=pk)
+    return render(request,'facilitator/question_view.html',{'questions':questions})
+
+'''
+Add question to challenges
+'''
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def add_question_view(request):
+    if request.method == 'POST':
+        questionForm = QFORM.QuestionForm(request.POST)
+        if questionForm.is_valid():
+            question = questionForm.save(commit=False)
+            speciality = QMODEL.Speciality.objects.get(id=request.POST.get('specialityID'))
+            question.speciality = speciality
+            question.save()
+            return HttpResponseRedirect(reverse('viewquestions'))
+        else:
+            print("Form is invalid")
+            # You can add logic to flash a message on the screen here
+    else:
+        questionForm = QFORM.QuestionForm()
+    return render(request, 'facilitator/add_question.html', {'questionForm': questionForm})
+
+'''
+Deleting question
+'''
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def remove_question_view(request,pk):
+    question=QMODEL.Question.objects.get(id=pk)
+    question.delete()
+    return HttpResponseRedirect(reverse('viewquestions'))

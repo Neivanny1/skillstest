@@ -14,5 +14,7 @@ urlpatterns = [
     path('deletechallenge/<int:pk>', views.challenge_del_view, name='deletechallenge'),
     path('addorviewquestion/', views.add_or_view_question_view, name='addorviewquestion'),
     path('viewquestions/', views.viewquestionsview, name='viewquestions'),
-    path('viewquestion/', views.view_question_view, name='viewquestion'),
+    path('viewquestion/<int:pk>', views.view_question_view, name='viewquestion'),
+    path('addquestion/', views.add_question_view, name='addquestion'),
+    path('removequestion/<int:pk>', views.remove_question_view, name='removequestion'),
 ]

@@ -9,6 +9,8 @@ from challenge import forms as QFORM
 from datetime import datetime
 from django.urls import reverse
 # Create your views here.
+
+
 def facilitatorhome(request):
     current_time = datetime.now()
     context = {
@@ -80,3 +82,14 @@ def add_challenge_view(request):
 def viewchallengeview(request):
     challenges = QMODEL.Speciality.objects.all()
     return render(request,'facilitator/challenge_view.html',{'challenges':challenges})
+
+'''
+Deleting challenges
+'''
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def challenge_del_view(request, pk):
+    challenge = QMODEL.Speciality.objects.get(id=pk)
+    challenge.delete()
+    return HttpResponseRedirect(reverse('viewchallenge'))
+    

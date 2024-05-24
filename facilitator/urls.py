@@ -9,6 +9,7 @@ urlpatterns = [
     path('facilitatorlogin/', LoginView.as_view(template_name='facilitator/login.html'), name='facilitatorlogin'),
     path('facilitatordashboard/', views.facilitator_dashboard_view, name='facilitatordashboard'),
     path('addchallenge/', views.add_challenge_view, name='addchallenge'),
-    path('addorviewchallenge', views.add_or_view_challenge_view, name='addorviewchallenge'),
-    path('viewchallenge', views.viewchallengeview, name='viewchallenge')
+    path('addorviewchallenge/', views.add_or_view_challenge_view, name='addorviewchallenge'),
+    path('viewchallenge/', views.viewchallengeview, name='viewchallenge'),
+    path('deletechallenge/<int:pk>', views.challenge_del_view, name='deletechallenge'),
 ]

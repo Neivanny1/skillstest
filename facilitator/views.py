@@ -8,6 +8,7 @@ from participant import models as FMODEL
 from challenge import forms as QFORM
 from datetime import datetime
 from django.urls import reverse
+from django.contrib import messages
 # Create your views here.
 
 
@@ -36,6 +37,7 @@ def facilitator_signup_view(request):
             facilitator.save()
             my_facilitator_group = Group.objects.get_or_create(name='FACILITATOR')
             my_facilitator_group[0].user_set.add(user)
+        messages.success(request, ('Account Created Sucessfully!!'))
         return HttpResponseRedirect(reverse('facilitatorlogin'))
     return render(request, 'facilitator/signup.html', context=mydict)
 
@@ -60,7 +62,7 @@ or add challenge
 @login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
 def add_or_view_challenge_view(request):
-    return render(request,'facilitator/add_or_view.html')
+    return render(request,'facilitator/add_or_view_challenge.html')
 
 '''
 Adding challenges
@@ -76,7 +78,8 @@ def add_challenge_view(request):
         if specilaityForm.is_valid():        
             specilaityForm.save()
         else:
-            print("form is invalid")
+            messages.error(request, ('Please fill all the fields'))
+            return HttpResponseRedirect(reverse('add_or_view_challenge'))
         return HttpResponseRedirect(reverse('viewchallenge'))
     context = {
         'specialityForm': specilaityForm
@@ -102,6 +105,7 @@ Deleting challenges
 def challenge_del_view(request, pk):
     challenge = QMODEL.Speciality.objects.get(id=pk)
     challenge.delete()
+    messages.success(request, ('Challenge deleted Sucessfully!!'))
     return HttpResponseRedirect(reverse('viewchallenge'))
 
 '''
@@ -121,14 +125,46 @@ TODO:
 @login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
 def viewquestionsview(request):
-    question = QMODEL.Question.objects.all()
-    return render(request,'facilitator/questions_view.html',{'question':question})
+    speciality = QMODEL.Speciality.objects.all()
+    return render(request,'facilitator/questions_view.html',{'speciality':speciality})
 
 '''
 Viewing individual question
 '''
 @login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
-def view_question_view(request,pk):
-    question =QMODEL.Question.objects.all().filter(speciality_id=pk)
-    return render(request,'facilitator/question_view.html',{'question':question})
+def view_question_view(request, pk):
+    questions = QMODEL.Question.objects.all().filter(speciality_id=pk)
+    return render(request,'facilitator/question_view.html',{'questions':questions})
+
+'''
+Add question to challenges
+'''
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def add_question_view(request):
+    if request.method == 'POST':
+        questionForm = QFORM.QuestionForm(request.POST)
+        if questionForm.is_valid():
+            question = questionForm.save(commit=False)
+            speciality = QMODEL.Speciality.objects.get(id=request.POST.get('specialityID'))
+            question.speciality = speciality
+            question.save()
+            messages.success(request, ('Question added Sucessfully!!'))
+            return HttpResponseRedirect(reverse('viewquestions'))
+        else:
+            messages.error(request, ('Please fill all the fields'))
+    else:
+        questionForm = QFORM.QuestionForm()
+    return render(request, 'facilitator/add_question.html', {'questionForm': questionForm})
+
+'''
+Deleting question
+'''
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def remove_question_view(request,pk):
+    question=QMODEL.Question.objects.get(id=pk)
+    question.delete()
+    messages.success(request, ('Question deleted Sucessfully!!'))
+    return HttpResponseRedirect(reverse('viewquestions'))

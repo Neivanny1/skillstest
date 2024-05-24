@@ -1,4 +1,7 @@
 {% extends 'facilitator/base.html' %}
+{% block title %}
+Questions
+{% endblock %}
 {% block content %}
 {%load static%}
 <head>
@@ -34,12 +37,12 @@
           <th>Delete Question</th>
         </tr>
       </thead>
-      {% for question in questions %}
+      {% for quiz in questions %}
       <tr>
         <td>{{ quiz.question }}</td>
         <td>{{ quiz.marks }}</td>
-        <td><a class="btn btn-primary btn-xs"
-            href="{% url 'remove-question'  quiz.id  %}">
+        <td><a class="btn btn-danger btn-xs"
+            href="{% url 'removequestion'  quiz.id  %}">
             <span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>
       {% endfor %}

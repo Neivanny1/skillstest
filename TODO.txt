@@ -2,3 +2,5 @@ Today night Friday
 implement challenge delete function/view
 implement question add fuction/view
 posibly delete question view
+NB:
+FLash messages not working

@@ -44,11 +44,12 @@
         <td>{{ item.question_number }}</td>
         <td>{{ item.total_marks }}</td>
         
-        <td><a class="btn btn-danger btn-xs" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'deletechallenge' item.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>
       {% endfor %}
     </table>
   </div>
+  <a href="{% url 'addchallenge' %}" type="button" class="btn btn-primary">Add new challenge</a>
 </div>
 <br><br><br><br><br><br>
 {% endblock content %}

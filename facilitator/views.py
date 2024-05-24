@@ -53,13 +53,19 @@ def facilitator_dashboard_view(request):
     }
     return render(request,'facilitator/dashboard.html',context=dict)
 
-
+'''
+To show page with both option to view
+or add challenge
+'''
 @login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
 def add_or_view_challenge_view(request):
     return render(request,'facilitator/add_or_view.html')
+
 '''
 Adding challenges
+TODO:
+    Should add stick to show who created the challenge
 '''
 @login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
@@ -77,6 +83,11 @@ def add_challenge_view(request):
     }
     return render(request,'facilitator/add_challenge.html', context)
 
+'''
+View total challenges they have uploaded
+TODO:
+    Should only show challenges uploaded by current logged in facilitator.
+'''
 @login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
 def viewchallengeview(request):
@@ -92,4 +103,32 @@ def challenge_del_view(request, pk):
     challenge = QMODEL.Speciality.objects.get(id=pk)
     challenge.delete()
     return HttpResponseRedirect(reverse('viewchallenge'))
-    
+
+'''
+To show page with both option to view
+or add question
+'''
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def add_or_view_question_view(request):
+    return render(request,'facilitator/add_or_view_question.html')
+
+'''
+View total questions they have uploaded
+TODO:
+    Should only show questions uploaded by current logged in facilitator.
+'''
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def viewquestionsview(request):
+    question = QMODEL.Question.objects.all()
+    return render(request,'facilitator/questions_view.html',{'question':question})
+
+'''
+Viewing individual question
+'''
+@login_required(login_url='facilitatorlogin')
+@user_passes_test(is_facilitator)
+def view_question_view(request,pk):
+    question =QMODEL.Question.objects.all().filter(speciality_id=pk)
+    return render(request,'facilitator/question_view.html',{'question':question})

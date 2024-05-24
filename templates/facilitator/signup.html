@@ -19,7 +19,8 @@
     {% include "navbar.html" %}
 <br><br><br>
 <h3 style="text-align: center;color: red;">FACILITATOR SIGNUP</h3>
-<form action="{% url 'facilitatorsignup' %}" method="POST" autocomplete="off" enctype="multipart/form-data">
+<form action="{% url 'facilitatorsignup' %}"
+method="POST" autocomplete="off" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -61,7 +62,8 @@
       </div>
     <button type="submit" class="btn btn-primary">Sign Up</button> <br>
     <p>Already have an account?
-      <a href="{% url 'facilitatorlogin' %}" class="btn btn-primary btn-lg btn-info"><i class="fa fa-sign-in"></i>Login</a>
+      <a href="{% url 'facilitatorlogin' %}"
+      class="btn btn-primary btn-lg btn-info"><i class="fa fa-sign-in"></i>Login</a>
     </p>
   </form>
 <br><br>

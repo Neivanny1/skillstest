@@ -12,4 +12,7 @@ urlpatterns = [
     path('addorviewchallenge/', views.add_or_view_challenge_view, name='addorviewchallenge'),
     path('viewchallenge/', views.viewchallengeview, name='viewchallenge'),
     path('deletechallenge/<int:pk>', views.challenge_del_view, name='deletechallenge'),
+    path('addorviewquestion/', views.add_or_view_question_view, name='addorviewquestion'),
+    path('viewquestions/', views.viewquestionsview, name='viewquestions'),
+    path('viewquestion/', views.view_question_view, name='viewquestion'),
 ]

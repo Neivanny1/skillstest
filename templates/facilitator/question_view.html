@@ -24,31 +24,27 @@
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h6 class="panel-title">Exams</h6>
+      <h6 class="panel-title">Questions</h6>
     </div>
     <table class="table table-hover" id="dev-table">
       <thead>
         <tr>
-          <th>Challenge Name</th>
-          <th>Total Question</th>
-          <th>Total Marks</th>
-          <th>Delete</th>
+          <th>Question</th>
+          <th>Marks</th>
+          <th>Delete Question</th>
         </tr>
       </thead>
-      {% for item in challenges %}
+      {% for question in questions %}
       <tr>
-        <td>{{ item.speciality_name }}</td>
-        <td>{{ item.question_number }}</td>
-        <td>{{ item.total_marks }}</td>
-        <td><a class="btn btn-danger btn-xs"
-          href="{% url 'deletechallenge' item.id %}"><span
-          class="glyphicon glyphicon-trash"></span></a></td>
+        <td>{{ quiz.question }}</td>
+        <td>{{ quiz.marks }}</td>
+        <td><a class="btn btn-primary btn-xs"
+            href="{% url 'remove-question'  quiz.id  %}">
+            <span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>
       {% endfor %}
     </table>
   </div>
-  <a href="{% url 'addchallenge' %}"
-  type="button" class="btn btn-primary">Add new challenge</a>
 </div>
 <br><br><br><br><br><br>
 {% endblock content %}

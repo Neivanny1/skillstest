@@ -1,9 +1,9 @@
 {% extends 'facilitator/base.html' %}
-{% block title%}
-Challenges
+{% load static %}
+{% block title %}
+Question View
 {% endblock %}
 {% load widget_tweaks %}
-{% load static %}
 {% block content %}
 <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@ Challenges
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/facilitator/dashboard.css' %}">
   </head>
 <br><br>
   <div class="container">
@@ -21,19 +21,21 @@ Challenges
       <div class="col-md-4 col-xl-6">
         <div class="card bg-c-blue order-card">
           <div class="card-block">
-            <h6 class="m-b-20"> <a href="{% url 'addchallenge' %}" style="text-decoration: none;color:white;">Add Challenge</a> </h6>
-            <h2 class="text-right"> <a href="{% url 'addchallenge' %}" style="text-decoration: none;color:white;"><i class="fas fa-plus f-left"></a></i></h2>
+            <h6 class="m-b-20"> <a href="teacher-add-question" 
+              style="text-decoration: none;color:white;">Add Question</a> </h6>
+            <h2 class="text-right"><i class="fas fa-plus f-left"></i></h2>
           </div>
         </div>
       </div>
       <div class="col-md-4 col-xl-6">
         <div class="card bg-c-green order-card">
           <div class="card-block">
-            <h6 class="m-b-20"><a href="{% url 'viewchallenge' %}" style="text-decoration: none;color:white;">View Challenges</a> </h6>
-            <h2 class="text-right"><a href="{% url 'viewchallenge' %}" style="text-decoration: none;color:white;"><i class="fas fa-eye f-left"></i> </a></h2>
+            <h6 class="m-b-20"><a href="{% url 'viewquestions' %}" 
+              style="text-decoration: none;color:white;">View Questions</a> </h6>
+            <h2 class="text-right"><i class="fas fa-eye f-left"></i></h2>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
   </div>
 <br><br><br><br><br><br><br><br><br><br>

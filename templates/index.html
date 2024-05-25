@@ -1,52 +1,35 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en" dir="ltr">
-<style>
-  .jumbotron{
-    margin-bottom: 0px;
-  }
-  table {
-            border-collapse: separate;
-            border-spacing: 15px;
-            width: 60%;
-            margin: 0 auto;
-        }
-  th, td {
-            border: 1px solid peru;
-            padding: 10px;
-        }
-</style>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Skillstest | Landing Page</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
 <body>
-  {% include "navbar.html" %}
-<br>
-<section id="section-jumbotron" class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center">
-  <div class="container text-center">
-    <h1 class="display-1 text-info">Let's Quiz</h1>
-    <p class="display-4 d-none d-sm-block">Test your skills and become a master.</p>
-    <p class="lead">We organize quizzes on various topics.</p>
-
-    <p class="lead">Sign up if you haven't already and get access to millions of quizzes on the topic of your interest.</p>
-    <p><strong> Start Your Journey Here:</strong></p>
-    <table>
-      <tr>
-        <th colspan="2" class="section-heading">Signup As</th>
-      </tr>
-      <tr>
-          <td> <a href="{% url 'participantsignup' %}" class="btn btn-primary btn-lg" style="padding-right: 35px;"><i class="fa fa-user-plus" aria-hidden="true"></i>Participant</a></td>
-          <td><a href="{% url 'facilitatorsignup' %}" class="btn btn-primary btn-lg" style="padding-right: 35px;"><i class="fa fa-user-plus" aria-hidden="true"></i>Facilitator</a></td>
-      </tr>
-      <td colspan="4" class="section-heading">OR</td>
-      <tr>
-        <th colspan="2" class="section-heading">Login As</th>
-      </tr>
-      <tr>
-          <td><a href="{% url 'participantlogin' %}" class="btn btn-primary btn-lg btn-info" style="padding-right: 35px;"><i class="fa fa-sign-in" aria-hidden="true"></i>Participant</a> </td>
-          <td><a href="{% url 'facilitatorlogin' %}" class="btn  btn-primary btn-lg btn-info" style="padding-right: 35px;"><i class="fa fa-sign-in" aria-hidden="true"></i>Facilitator</a> </td>
-      </tr>
-  </table>
-    <br><br><br>
-  </div>  
-</section>
-  {% include "footer.html" %}
+    {% include "navbar.html" %}
+    <section class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <h1 class="display-3">Let's Quiz</h1>
+            <p class="lead">Test your skills and become a master.</p>
+            <p>We organize quizzes on various topics.</p>
+            <p>Sign up if you haven't already and get access to millions of quizzes on the topic of your interest.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Signup As</h2>
+                    <a href="{% url 'participantsignup' %}" class="btn btn-primary btn-lg">Participant</a>
+                    <a href="{% url 'facilitatorsignup' %}" class="btn btn-primary btn-lg">Facilitator</a>
+                </div>
+                <div class="col-md-6">
+                    <h2>Login As</h2>
+                    <a href="{% url 'participantlogin' %}" class="btn btn-primary btn-lg">Participant</a>
+                    <a href="{% url 'facilitatorlogin' %}" class="btn btn-primary btn-lg">Facilitator</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include "footer.html" %}
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>

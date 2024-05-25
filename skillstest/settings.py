@@ -147,15 +147,5 @@ EMAIL_HOST_PASSWORD = 'xyz' # host email password required
 # this process is required because google blocks apps authentication by default
 EMAIL_RECEIVING_USER = ['to@gmail.com'] # email on which you will receive messages sent from website
 
-# MESSAGES
-from django.contrib.messages import constants as messages
-
-MESSAGE_TAGS = {
-    messages.DEBUG: 'debug',
-    messages.INFO: 'info',
-    messages.SUCCESS: 'success',
-    messages.WARNING: 'warning',
-    messages.ERROR: 'danger',
-}
 
 

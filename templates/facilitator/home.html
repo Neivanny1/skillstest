@@ -2,23 +2,17 @@
 {% load static %}
 <html lang="en" dir="ltr">
 <head>
+  <title>
+    Skillstest | Facilitator Home
+  </title>
   <meta charset="utf-8">
   <meta name="viewport" 
   content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <style media="screen">
-    .jumbotron {
-      margin-top: 0px;
-      margin-bottom: 0px;
-    }
-
-    .jumbotron h1 {
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/facilitator/home.css' %}">
 </head>
 <body>
   {% include "navbar.html" %}
-  <br><br>
+  <br>
   <div class="jumbotron" style="margin-bottom:0px;">
     {% block greets %}
         {% if 5 <= current_time.hour < 12 %}

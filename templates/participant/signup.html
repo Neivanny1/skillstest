@@ -1,13 +1,13 @@
 <!DOCTYPE html>
+{% load static %}
 {% load widget_tweaks %}
 <html lang="en" dir="ltr">
 <head>
+    <title>
+       Skillstest | Participant signup
+    </title>
     <meta charset="utf-8">
-    <style>
-        form {
-            margin: 50px;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
 </head>
 <body>
     {% include "navbar.html" %}

@@ -17,6 +17,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 STATIC_DIR=os.path.join(BASE_DIR,'static')
 MEDIA_ROOT=os.path.join(BASE_DIR,'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS=[
+STATIC_DIR,
+ ]
+
+LOGIN_REDIRECT_URL='/afterlogin'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Quick-start development settings - unsuitable for production
@@ -123,14 +130,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS=[
-STATIC_DIR,
- ]
-
-LOGIN_REDIRECT_URL='/afterlogin'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #for contact us give your gmail id and password
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'

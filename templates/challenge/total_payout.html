@@ -1,9 +1,9 @@
 {% extends 'challenge/base.html' %}
 {% block title %}
-Pending Approvals
+Totat Payout
 {% endblock %}
 {% block content %}
-{% load static %}
+{%load static%}
 <head>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -26,7 +26,7 @@ Pending Approvals
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h6 class="panel-title">Pending Facilitators</h6>
+      <h6 class="panel-title">Teachers Salary</h6>
     </div>
     <table class="table table-hover" id="dev-table">
       <thead>
@@ -34,26 +34,22 @@ Pending Approvals
           <th>Name</th>
           <th>Profile Picture</th>
           <th>Mobile</th>
-          <th>Address</th>
-          <th>Approve</th>
-          <th>Reject</th>
+          <th>Salary</th> 
         </tr>
       </thead>
-      {% for details in pending_accounts %}
+      {% for t in facilitators %}
       <tr>
-        <td> {{ details.get_name }}</td>
-        <td> <img src="{% static details.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
-        <td>{{ details.mobile }}</td>
-        <td>{{ details.address }}</td>
-        <td><a class="btn btn-primary btn-xs" href="{% url 'approvepending' details.id %}"><span class="glyphicon glyphicon-ok"></span></a></td>
-        <td><a class="btn btn-danger btn-xs" href="{% url 'rejectpending' details.id %}"><span class="	glyphicon glyphicon-remove"></span></a></td>
-      </tr>
+        <td> {{t.get_name}}</td>
+        <td> <img src="{% static t.profile_pic.url %}" alt="Profile Pic"
+            height="40px" width="40px" /></td>
+        <td>{{t.mobile}}</td>
+        <td>{{t.salary}}</td>
+        </tr>
       {% endfor %}
     </table>
   </div>
-  <a href="{% url 'viewfacilitators' %}"
-type="button" class="btn btn-primary">View Facilitators</a>
+  <a href="{% url 'viewfacilitators' %}" type="button"
+  class="btn btn-primary">View Facilitators</a>
 </div>
-
 <br><br><br><br><br><br>
 {% endblock content %}

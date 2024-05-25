@@ -1,9 +1,9 @@
 {% extends 'challenge/base.html' %}
 {% block title %}
-Pending Approvals
+View Facilitator
 {% endblock %}
 {% block content %}
-{% load static %}
+{%load static%}
 <head>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -26,34 +26,31 @@ Pending Approvals
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h6 class="panel-title">Pending Facilitators</h6>
+      <h6 class="panel-title">Facilitator</h6>
     </div>
     <table class="table table-hover" id="dev-table">
       <thead>
         <tr>
           <th>Name</th>
           <th>Profile Picture</th>
-          <th>Mobile</th>
-          <th>Address</th>
-          <th>Approve</th>
-          <th>Reject</th>
+          <th>Update</th>
+          <th>Delete</th>
         </tr>
       </thead>
-      {% for details in pending_accounts %}
+      {% for t in facilitator %}
       <tr>
-        <td> {{ details.get_name }}</td>
-        <td> <img src="{% static details.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
-        <td>{{ details.mobile }}</td>
-        <td>{{ details.address }}</td>
-        <td><a class="btn btn-primary btn-xs" href="{% url 'approvepending' details.id %}"><span class="glyphicon glyphicon-ok"></span></a></td>
-        <td><a class="btn btn-danger btn-xs" href="{% url 'rejectpending' details.id %}"><span class="	glyphicon glyphicon-remove"></span></a></td>
+        <td> {{t.get_name}}</td>
+        <td> <img src="{% static t.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        <td>{{t.mobile}}</td>
+        <td>{{t.address}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'updatefacilitator' t.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'deletefacilitator' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>
       {% endfor %}
     </table>
   </div>
-  <a href="{% url 'viewfacilitators' %}"
-type="button" class="btn btn-primary">View Facilitators</a>
+  <a href="{% url 'viewfacilitators' %}" type="button"
+  class="btn btn-primary">View Facilitators</a>
 </div>
-
 <br><br><br><br><br><br>
 {% endblock content %}

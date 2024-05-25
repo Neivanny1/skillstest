@@ -1,0 +1,62 @@
+{% extends 'challenge/base.html' %}
+{% load static %}
+{% block title %}
+View Facilitator
+{% endblock %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  </head>
+<br><br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-blue order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"> <a href="{% url 'viewfacilitator' %}"
+                style="text-decoration: none;color:white;">Total Facilitator</a> </h6>
+            <h2 class="text-right"><a href="{% url 'viewfacilitator' %}"
+                style="text-decoration: none;color:white;">
+                <i class="fas fa-chalkboard-teacher f-left"></i></a>
+                <span>{{total_facilitator}}</span></h2>      
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-green order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"><a href="{% url 'checkpending' %}" 
+                style="text-decoration: none;color:white;">Total Pending Facilitator</a> </h6>
+            <h2 class="text-right"><a href="{% url 'checkpending' %}"
+                style="text-decoration: none;color:white;"><i class="fas fa-spinner f-left"></i></a>
+                <span>{{pending_facilitator}}</span></h2>  
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-yellow order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"><a href="{% url 'totalpayout' %}"
+              style="text-decoration: none;color:white;">Total Facilitator Salary</a></h6>
+            <h2 class="text-right"><a href="{% url 'totalpayout' %}"
+              style="text-decoration: none;color:white;">
+              <i class="fas fa-dollar-sign f-left"></i>
+            </a><span>{{salary}}</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br><br><br><br><br><br><br><br><br><br>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+{% endblock content %}

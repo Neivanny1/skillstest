@@ -22,4 +22,7 @@ urlpatterns = [
     #Handling admin tasks
     path('checkpending/', views.check_pending_approval_view, name='checkpending'),
     path('approvepending/<int:pk>', views.approve_pending_view, name='approvepending'),
+    path('viewfacilitators/', views.view_facilitators_view, name='viewfacilitators'),
+    path('viewfacilitator/', views.view_facilitator_view, name='viewfacilitator'),
+    path('totalpayout/', views.total_payout_view, name='totalpayout'),
 ]

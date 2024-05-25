@@ -1,6 +1,4 @@
 Today night Friday
-implement challenge delete function/view
-implement question add fuction/view
-posibly delete question view
+implement challenge reject, delete and update facilitator
 NB:
 FLash messages not working

@@ -11,6 +11,7 @@ from facilitator import models as FMODEL
 from participant.views import is_participant
 from participant import models as PMODEL
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 
 '''
 Handles home page display
@@ -81,7 +82,26 @@ def contactus_view(request):
             return render(request, 'onsend.html')
     return render(request, 'contact.html', {'form':sub})
 
+'''
+Displays all facilitators details
+BOth approved and pending
+'''
+@login_required(login_url='adminlogin')
+def view_facilitators_view(request):
+    dict={
+    'total_facilitator':FMODEL.Facilitator.objects.all().filter(status=True).count(),
+    'pending_facilitator':FMODEL.Facilitator.objects.all().filter(status=False).count(),
+    'salary':FMODEL.Facilitator.objects.all().filter(status=True).aggregate(Sum('salary'))['salary__sum'],
+    }
+    return render(request,'challenge/view_facilitators.html',context=dict)
 
+'''
+Approved facilitators
+'''
+@login_required(login_url='adminlogin')
+def view_facilitator_view(request):
+    facilitator = FMODEL.Facilitator.objects.all().filter(status=True)
+    return render(request,'challenge/view_facilitator.html',{'facilitator':facilitator})
 '''
 Check any pending approvals
 '''
@@ -104,7 +124,7 @@ def approve_pending_view(request, pk):
         f_pay = forms.FacilitatorPayForm(request.POST)
         if f_pay.is_valid():
             f = FMODEL.Facilitator.objects.get(id=pk)
-            f.payout = f_pay.cleaned_data['payout']
+            f.salary = f_pay.cleaned_data['salary']
             f.status = True
             f.save()
         else:
@@ -114,3 +134,11 @@ def approve_pending_view(request, pk):
         'f_pay': f_pay
         }
     return render(request, 'challenge/payout.html', context)
+
+'''
+Checking Total payouts
+'''
+@login_required(login_url='adminlogin')
+def total_payout_view(request):
+    facilitators = FMODEL.Facilitator.objects.all().filter(status=True)
+    return render(request,'challenge/total_payout.html',{'facilitators':facilitators})

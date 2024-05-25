@@ -19,10 +19,13 @@ urlpatterns = [
     path('contactus/', views.contactus_view, name='contactus'),
     path('aboutus/', views.aboutus_view, name='aboutus'),
 
-    #Handling admin tasks
+    #Handling facilitators
     path('checkpending/', views.check_pending_approval_view, name='checkpending'),
     path('approvepending/<int:pk>', views.approve_pending_view, name='approvepending'),
+    path('rejectpending/<int:pk>', views.reject_pending_view, name='rejectpending'),
     path('viewfacilitators/', views.view_facilitators_view, name='viewfacilitators'),
     path('viewfacilitator/', views.view_facilitator_view, name='viewfacilitator'),
     path('totalpayout/', views.total_payout_view, name='totalpayout'),
+    path('updatefacilitator/<int:pk>', views.update_facilitator_view, name='updatefacilitator'),
+    path('deletefacilitator/<int:pk>', views.delete_facilitator_view, name='deletefacilitator'),
 ]

@@ -39,18 +39,18 @@ View Facilitator
       </thead>
       {% for t in facilitator %}
       <tr>
-
         <td> {{t.get_name}}</td>
         <td> <img src="{% static t.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
         <td>{{t.mobile}}</td>
         <td>{{t.address}}</td>
-        
-        <td><a class="btn btn-primary btn-xs" href="{% url 'update-teacher' t.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
-        <td><a class="btn btn-danger btn-xs" href="{% url 'delete-teacher' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'updatefacilitator' t.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'deletefacilitator' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>
       {% endfor %}
     </table>
   </div>
+  <a href="{% url 'viewfacilitators' %}" type="button"
+  class="btn btn-primary">View Facilitators</a>
 </div>
 <br><br><br><br><br><br>
 {% endblock content %}

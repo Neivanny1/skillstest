@@ -2,3 +2,4 @@ Today night Friday
 implement challenge reject, delete and update facilitator
 NB:
 FLash messages not working
+facilitator should only see participants who are taking their challenge

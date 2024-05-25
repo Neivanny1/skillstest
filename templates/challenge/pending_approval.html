@@ -46,7 +46,7 @@ Pending Approvals
         <td>{{ details.mobile }}</td>
         <td>{{ details.address }}</td>
         <td><a class="btn btn-primary btn-xs" href="{% url 'approvepending' details.id %}"><span class="glyphicon glyphicon-ok"></span></a></td>
-        <td><a class="btn btn-danger btn-xs" href="#"><span class="	glyphicon glyphicon-remove"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'rejectpending' details.id %}"><span class="	glyphicon glyphicon-remove"></span></a></td>
       </tr>
       {% endfor %}
     </table>

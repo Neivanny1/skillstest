@@ -51,7 +51,7 @@ def facilitator_dashboard_view(request):
     dict={
     'total_speciality':QMODEL.Speciality.objects.all().count(),
     'total_question':QMODEL.Question.objects.all().count(),
-    'total_participants':FMODEL.Participant.objects.all().count()
+    'total_participant':FMODEL.Participant.objects.all().count()
     }
     return render(request,'facilitator/dashboard.html',context=dict)
 

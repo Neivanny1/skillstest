@@ -15,48 +15,89 @@ View Facilitator
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <style>
+      .card {
+  border: none;
+  box-shadow: none;
+}
+
+    </style>
   </head>
 <br><br>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-xl-4">
-        <div class="card bg-c-blue order-card">
-          <div class="card-block">
-            <h6 class="m-b-20"> <a href="{% url 'viewfacilitator' %}"
-                style="text-decoration: none;color:white;">Total Facilitator</a> </h6>
-            <h2 class="text-right"><a href="{% url 'viewfacilitator' %}"
-                style="text-decoration: none;color:white;">
-                <i class="fas fa-chalkboard-teacher f-left"></i></a>
-                <span>{{total_facilitator}}</span></h2>      
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-xl-4 order-1 order-md-1">
+      <div class="card bg-c-blue order-card">
+        <div class="card-block">
+          <h6 class="m-b-20">
+            <a href="{% url 'viewfacilitator' %}" style="text-decoration: none;color:white;">Total Facilitator</a>
+          </h6>
+          <h2 class="text-right">
+            <a href="{% url 'viewfacilitator' %}" style="text-decoration: none;color:white;">
+              <i class="fas fa-chalkboard-teacher f-left"></i>
+            </a>
+            <span>{{total_facilitator}}</span>
+          </h2>
         </div>
       </div>
-      <div class="col-md-4 col-xl-4">
-        <div class="card bg-c-green order-card">
-          <div class="card-block">
-            <h6 class="m-b-20"><a href="{% url 'checkpending' %}" 
-                style="text-decoration: none;color:white;">Total Pending Facilitator</a> </h6>
-            <h2 class="text-right"><a href="{% url 'checkpending' %}"
-                style="text-decoration: none;color:white;"><i class="fas fa-spinner f-left"></i></a>
-                <span>{{pending_facilitator}}</span></h2>  
-          </div>
+    </div>
+    <div class="col-md-4 col-xl-4 order-3 order-md-2">
+      <div class="card bg-c-green order-card">
+        <div class="card-block">
+          <h6 class="m-b-20">
+            <a href="{% url 'checkpending' %}" style="text-decoration: none;color:white;">Total Pending Facilitator</a>
+          </h6>
+          <h2 class="text-right">
+            <a href="{% url 'checkpending' %}" style="text-decoration: none;color:white;">
+              <i class="fas fa-spinner f-left"></i>
+            </a>
+            <span>{{pending_facilitator}}</span>
+          </h2>
         </div>
       </div>
-      <div class="col-md-4 col-xl-4">
-        <div class="card bg-c-yellow order-card">
-          <div class="card-block">
-            <h6 class="m-b-20"><a href="{% url 'totalpayout' %}"
-              style="text-decoration: none;color:white;">Total Facilitator Salary</a></h6>
-            <h2 class="text-right"><a href="{% url 'totalpayout' %}"
-              style="text-decoration: none;color:white;">
+    </div>
+    <div class="col-md-4 col-xl-4 order-2 order-md-3">
+      <div class="card bg-c-yellow order-card">
+        <div class="card-block">
+          <h6 class="m-b-20">
+            <a href="{% url 'totalpayout' %}" style="text-decoration: none;color:white;">Total Facilitator Salary</a>
+          </h6>
+          <h2 class="text-right">
+            <a href="{% url 'totalpayout' %}" style="text-decoration: none;color:white;">
               <i class="fas fa-dollar-sign f-left"></i>
-            </a><span>{{salary}}</span></h2>
-          </div>
+            </a>
+            <span>{{salary}}</span>
+          </h2>
         </div>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-4 col-xl-4 order-4 order-md-4">
+      <div class="card order-card">
+        <div class="card-block">
+          <a href="{% url 'viewfacilitators' %}" type="button" class="btn btn-primary">View Facilitators</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xl-4 order-6 order-md-5">
+      <div class="card order-card">
+        <div class="card-block">
+          <a href="{% url 'checkpending' %}" type="button" class="btn btn-primary">Check Pending</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xl-4 order-5 order-md-6">
+      <div class="card order-card">
+        <div class="card-block">
+          <a href="{% url 'totalpayout' %}" type="button" class="btn btn-primary">Check Total Payout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <br><br><br><br><br><br><br><br><br><br>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 {% endblock content %}

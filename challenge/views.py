@@ -8,6 +8,7 @@ from django.conf import settings
 from django.urls import reverse
 from facilitator.views import is_facilitator
 from facilitator import models as FMODEL
+from facilitator import forms as FFORM
 from participant.views import is_participant
 from participant import models as PMODEL
 from django.contrib.auth.decorators import login_required
@@ -20,6 +21,23 @@ def home_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('afterlogin'))  
     return render(request,'index.html')
+
+'''
+Handles all logins
+'''
+def afterlogin_view(request):
+    if is_participant(request.user):
+        return redirect(reverse('participantdashboard'))
+                
+    elif is_facilitator(request.user):
+        accountapproval = FMODEL.Facilitator.objects.all().filter(user_id=request.user.id,status=True)
+        if accountapproval:
+            return redirect(reverse('facilitatordashboard'))
+        else:
+            return render(request,'facilitator/approval.html')
+    elif is_admin(request.user):
+        return redirect('admindash')
+
 
 '''
 Admin home view
@@ -44,22 +62,6 @@ def admin_dashboard_view(request):
     }
     return render(request, 'challenge/adminDash.html', context=dict)
 
-
-'''
-Handles all logins
-'''
-def afterlogin_view(request):
-    if is_participant(request.user):
-        return redirect(reverse('participantdashboard'))
-                
-    elif is_facilitator(request.user):
-        accountapproval = FMODEL.Facilitator.objects.all().filter(user_id=request.user.id,status=True)
-        if accountapproval:
-            return redirect(reverse('facilitatordashboard'))
-        else:
-            return render(request,'facilitator/approval.html')
-    elif is_admin(request.user):
-        return redirect('admindash')
 
 '''
 Handles aboout information
@@ -136,9 +138,51 @@ def approve_pending_view(request, pk):
     return render(request, 'challenge/payout.html', context)
 
 '''
+Rejecting approvals
+'''
+@login_required(login_url='adminlogin')
+def reject_pending_view(request, pk):
+    facilitator = FMODEL.Facilitator.objects.get(id=pk)
+    user = User.objects.get(id=facilitator.user_id)
+    user.delete()
+    facilitator.delete()
+    return HttpResponseRedirect(reverse('checkpending'))
+
+'''
+Updating facilitators details
+'''
+@login_required(login_url='adminlogin')
+def update_facilitator_view(request,pk):
+    facilitator = FMODEL.Facilitator.objects.get(id=pk)
+    user = FMODEL.User.objects.get(id=facilitator.user_id)
+    userForm = FFORM.FacilitatorUserForm(instance=user)
+    facilitatorForm = FFORM.FacilitatorForm(request.FILES,instance=facilitator)
+    mydict={'userForm':userForm,'facilitatorForm':facilitatorForm}
+    if request.method == 'POST':
+        userForm = FFORM.FacilitatorUserForm(request.POST,instance=user)
+        facilitatorForm = FFORM.FacilitatorForm(request.POST,request.FILES,instance=facilitator)
+        if userForm.is_valid() and facilitatorForm.is_valid():
+            user=userForm.save()
+            user.set_password(user.password)
+            user.save()
+            facilitatorForm.save()
+            return redirect(reverse('viewfacilitator'))
+    return render(request,'challenge/update_facilitator.html', context=mydict)
+'''
 Checking Total payouts
 '''
 @login_required(login_url='adminlogin')
 def total_payout_view(request):
     facilitators = FMODEL.Facilitator.objects.all().filter(status=True)
     return render(request,'challenge/total_payout.html',{'facilitators':facilitators})
+
+'''
+Deleting Facilitator
+'''
+@login_required(login_url='adminlogin')
+def delete_facilitator_view(request,pk):
+    facilitator = FMODEL.Facilitator.objects.get(id=pk)
+    user =User.objects.get(id=facilitator.user_id)
+    user.delete()
+    facilitator.delete()
+    return HttpResponseRedirect(reverse('viewfacilitator'))

@@ -33,8 +33,12 @@
       <div class="col-md-4 col-xl-3">
         <div class="card bg-c-green order-card">
           <div class="card-block">
-            <h6 class="m-b-20"><a href="admin-view-teacher" style="text-decoration: none;color:white;">Total Facilitators</a> </h6>
-            <h2 class="text-right"><i class="fas fa-chalkboard-teacher f-left"></i><span>{{total_facilitator}}</span></h2>   
+            <h6 class="m-b-20"><a href="{% url 'viewfacilitator' %}"
+              style="text-decoration: none;color:white;">Total Facilitators</a> </h6>
+            <h2 class="text-right"> <a href="{% url 'viewfacilitator' %}"
+              style="text-decoration: none;color:white;"
+              ><i class="fas fa-chalkboard-teacher f-left"></i> 
+            </a> <span>{{total_facilitator}}</span></h2>   
           </div>
         </div>
       </div>

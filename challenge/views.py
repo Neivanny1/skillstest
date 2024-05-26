@@ -181,44 +181,46 @@ def aboutus_view(request):
 '''
 Handles contact information
 '''
-# def contactus_view(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         sender_email = request.POST.get('email')
-#         subject = request.POST.get('subject')
-#         message = request.POST.get('message')
-        
-#         if name and sender_email and subject and message:
-#             full_message = f"Name: {name}\n Email: {sender_email}\n\nMessage:\n{message}"
-#             try:
-#                 send_mail(subject,
-#                           full_message,
-#                           sender_email,
-#                           [settings.EMAIL_HOST_USER],
-#                           fail_silently=False)
-#                 return render(request, 'onsucess.html')
-#             except Exception as e:
-#                 return render(request, 'onfail.html')
-#     return render(request, 'contact.html')
-
 def contactus_view(request):
     if request.method == 'POST':
         name = request.POST.get('name')
-        email = request.POST.get('email')
+        sender_email = request.POST.get('email')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
         
-        if name and email and subject and message:
-            full_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        if name and sender_email and subject and message:
+            full_message = f"Name: {name}\n Email: {sender_email}\n\nMessage:\n{message}"
             try:
                 send_mail(subject,
                           full_message,
-                          email,
+                          sender_email,
                           [settings.EMAIL_HOST_USER],
                           fail_silently=False)
-                return render(request, 'onsend.html')
+                return render(request, 'onsucess.html')
             except Exception as e:
-                return HttpResponse(f'An error occurred: {e}')
-        else:
-            return HttpResponse('All fields are required.')
+                return render(request, 'onfail.html')
     return render(request, 'contact.html')
+'''
+For debugging
+'''
+# def contactus_view(request):
+#     if request.method == 'POST':
+#         name = request.POST.get('name')
+#         email = request.POST.get('email')
+#         subject = request.POST.get('subject')
+#         message = request.POST.get('message')
+        
+#         if name and email and subject and message:
+#             full_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+#             try:
+#                 send_mail(subject,
+#                           full_message,
+#                           email,
+#                           [settings.EMAIL_HOST_USER],
+#                           fail_silently=False)
+#                 return render(request, 'onsend.html')
+#             except Exception as e:
+#                 return HttpResponse(f'An error occurred: {e}')
+#         else:
+#             return HttpResponse('All fields are required.')
+#     return render(request, 'contact.html')

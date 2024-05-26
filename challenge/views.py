@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from participant.views import is_participant
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -13,7 +13,7 @@ from participant.views import is_participant
 from participant import models as PMODEL
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
-
+from django.contrib import messages
 '''
 Handles home page display
 '''
@@ -109,11 +109,12 @@ def approve_pending_view(request, pk):
             f.status = True
             f.save()
         else:
-            print('Form is invalid')
+            messages.warning(request, ('Please fill all the fields'))
         return HttpResponseRedirect(reverse('checkpending'))
     context = {
         'f_pay': f_pay
         }
+    messages.success(request, ('Facilitator Approved Sucessfully'))
     return render(request, 'challenge/payout.html', context)
 
 '''
@@ -125,6 +126,7 @@ def reject_pending_view(request, pk):
     user = User.objects.get(id=facilitator.user_id)
     user.delete()
     facilitator.delete()
+    messages.success(request, ('Facilitator Rejected Sucessfully'))
     return HttpResponseRedirect(reverse('checkpending'))
 
 '''
@@ -145,6 +147,7 @@ def update_facilitator_view(request,pk):
             user.set_password(user.password)
             user.save()
             facilitatorForm.save()
+            messages.success(request, ('Facilitator Updated Sucessfully'))
             return redirect(reverse('viewfacilitator'))
     return render(request,'challenge/update_facilitator.html', context=mydict)
 '''
@@ -164,6 +167,7 @@ def delete_facilitator_view(request,pk):
     user =User.objects.get(id=facilitator.user_id)
     user.delete()
     facilitator.delete()
+    messages.success(request, ('Facilitator Deleted Sucessfully'))
     return HttpResponseRedirect(reverse('viewfacilitator'))
 
 
@@ -177,14 +181,40 @@ def aboutus_view(request):
 '''
 Handles contact information
 '''
+# def contactus_view(request):
+#     if request.method == 'POST':
+#         name = request.POST.get('name')
+#         sender_email = request.POST.get('email')
+#         subject = request.POST.get('subject')
+#         message = request.POST.get('message')
+        
+#         if name and sender_email and subject and message:
+#             full_message = f"Name: {name}\n Email: {sender_email}\n\nMessage:\n{message}"
+#             try:
+#                 send_mail(subject,
+#                           full_message,
+#                           sender_email,
+#                           [settings.EMAIL_HOST_USER],
+#                           fail_silently=False)
+#                 return render(request, 'onsucess.html')
+#             except Exception as e:
+#                 return render(request, 'onfail.html')
+#     return render(request, 'contact.html')
+
 def contactus_view(request):
-    sub = forms.ContactusForm()
     if request.method == 'POST':
-        sub = forms.ContactusForm(request.POST)
-        if sub.is_valid():
-            email = sub.cleaned_data['Email']
-            name=sub.cleaned_data['Name']
-            message = sub.cleaned_data['Message']
-            send_mail(str(name)+' || '+str(email),message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
-            return render(request, 'onsend.html')
-    return render(request, 'contact.html', {'form':sub})
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        
+        if name and email and subject and message:
+            full_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+            try:
+                send_mail(subject, full_message, email, [settings.EMAIL_HOST_USER], fail_silently=False)
+                return render(request, 'onsend.html')
+            except Exception as e:
+                return HttpResponse(f'An error occurred: {e}')
+        else:
+            return HttpResponse('All fields are required.')
+    return render(request, 'contact.html')

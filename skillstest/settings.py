@@ -108,16 +108,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-# Customizing message tags to match Bootstrap 5 classes
-from django.contrib.messages import constants as messages
 
-MESSAGE_TAGS = {
-    messages.DEBUG: 'debug',
-    messages.INFO: 'info',
-    messages.SUCCESS: 'success',
-    messages.WARNING: 'warning',
-    messages.ERROR: 'danger',
-}
 #Sending Emails Set up
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -126,6 +117,6 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'Skillstest'
 # VARIABLES
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-SECRET_KEY = os.getenv('SECRET_KEY')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', "")
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', "")
+SECRET_KEY = os.getenv('SECRET_KEY', "")

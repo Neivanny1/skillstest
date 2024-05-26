@@ -211,7 +211,11 @@ def contactus_view(request):
         if name and email and subject and message:
             full_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
             try:
-                send_mail(subject, full_message, email, [settings.EMAIL_HOST_USER], fail_silently=False)
+                send_mail(subject,
+                          full_message,
+                          email,
+                          [settings.EMAIL_HOST_USER],
+                          fail_silently=False)
                 return render(request, 'onsend.html')
             except Exception as e:
                 return HttpResponse(f'An error occurred: {e}')

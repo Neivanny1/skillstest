@@ -1,39 +1,39 @@
 body {
-  background-color: #f0f0f0; /* Light gray background */
-  font-family: Arial, sans-serif; /* Default font family */
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
 }
 
 .jumbotron {
-  background-image: linear-gradient(to bottom right, #000000, #333333); /* Gradient background */
-  color: #ffffff; /* White text color */
+  background-image: linear-gradient(to bottom right, #000000, #333333);
+  color: #ffffff;
   text-align: center;
-  padding: 50px; /* Add padding for content */
-  margin-top: 50px; /* Add margin from the top */
-  border-radius: 20px; /* Rounded corners */
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+  padding: 50px;
+  margin-top: 50px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 
 .jumbotron h1 {
-  font-size: 3rem; /* Larger font size for heading */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for emphasis */
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .lead {
-  font-size: 1.2rem; /* Larger font size for lead text */
-  margin-bottom: 30px; /* Add margin at the bottom */
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
 
 .btn-primary {
-  background-color: #ffffff; /* White button background */
-  color: #333333; /* Dark button text color */
-  border-color: #333333; /* Dark button border color */
-  padding: 15px 30px; /* Increase padding for larger button */
-  font-size: 1.2rem; /* Larger font size for button text */
-  border-radius: 30px; /* Rounded corners for button */
-  transition: all 0.3s ease; /* Smooth transition on hover */
+  background-color: #ffffff;
+  color: #333333;
+  border-color: #333333;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #333333; /* Dark background on hover */
-  color: #ffffff; /* White text on hover */
+  background-color: #333333;
+  color: #ffffff;
 }

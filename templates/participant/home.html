@@ -2,15 +2,18 @@
 {% load static %}
 <html lang="en" dir="ltr">
 <head>
-  <title>Skillstest | Participant Home</title>
+  <title>
+    Skillstest | Participant Home
+  </title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" 
+  content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="{% static 'css/facilitator/home.css' %}">
 </head>
 <body>
   {% include "navbar.html" %}
   <br>
-  <div class="jumbotron">
+  <div class="jumbotron" style="margin-bottom:0px;">
     {% block greets %}
         {% if 5 <= current_time.hour < 12 %}
             <h1 class="display-4">Good Morning, Participant</h1>
@@ -26,8 +29,10 @@
     <hr class="my-4">
     <p>You can access various features after Login.</p>
     <p class="lead">
-      <a class="btn btn-primary btn-lg" href="{% url 'participantsignup' %}" role="button">Sign Up</a>
-      <a class="btn btn-primary btn-lg" href="{% url 'participantlogin' %}" role="button">Login</a>
+      <a class="btn btn-primary btn-lg"
+      href="{% url 'participantsignup' %}" role="button">Sign Up</a>
+      <a class="btn btn-primary btn-lg"
+      href="{% url 'participantlogin' %}" role="button">Login</a>
     </p>
     <br><br><br><br>
   </div>

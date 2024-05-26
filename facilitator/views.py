@@ -78,7 +78,7 @@ def add_challenge_view(request):
         if specilaityForm.is_valid():        
             specilaityForm.save()
         else:
-            messages.error(request, ('Please fill all the fields'))
+            messages.warning(request, ('Please fill all the fields'))
             return HttpResponseRedirect(reverse('add_or_view_challenge'))
         return HttpResponseRedirect(reverse('viewchallenge'))
     context = {
@@ -153,7 +153,7 @@ def add_question_view(request):
             messages.success(request, ('Question added Sucessfully!!'))
             return HttpResponseRedirect(reverse('viewquestions'))
         else:
-            messages.error(request, ('Please fill all the fields'))
+            messages.warning(request, ('Please fill all the fields'))
     else:
         questionForm = QFORM.QuestionForm()
     return render(request, 'facilitator/add_question.html', {'questionForm': questionForm})

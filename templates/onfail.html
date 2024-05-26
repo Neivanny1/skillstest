@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style media="screen">
+.jumbotron {
+    margin-bottom: 0px;
+}
+.jumbotron h1 {
+    text-align: center;
+}
+  </style>
+      <title>
+        {% block title %} skillstest | Error {% endblock %}
+      </title>
+</head>
+<body>
+  {% include "navbar.html" %}
+  <br><br>
+  <div class="jumbotron">
+    <h1 class="display-4">Something went wrong !</h1>
+    <p class="lead">Message not delivered</p>
+    <hr class="my-4">
+    <p>Kindly try Again later!</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="{% url 'contactus' %}" role="button">Try Again</a>
+    </p>
+  </div>
+  {% include "footer.html" %}
+</body>
+</html>

@@ -5,6 +5,10 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+.card {
+    border: none;
+    box-shadow: none;
+  }
 .about-us {
 /* margin-top: 70px; */
   display: flex;
@@ -12,7 +16,7 @@
   height: 100vh;
   width: 100%;
   padding: 90px 0;
-  background: #fff;
+  background-color: rgba(0,0,0,0.8);
 }
 .pic {
   height: auto;
@@ -31,13 +35,13 @@
   width: 540px;
 }
 .text h2 {
-  color: #333;
+  color: #1da9c0;
   font-size: 90px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 .text h5 {
-  color: #333;
+  color: #1da9c0;
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 20px;
@@ -46,7 +50,7 @@ span {
   color: #4070f4;
 }
 .text p {
-  color: #333;
+  color: ghostwhite;
   font-size: 18px;
   line-height: 25px;
   letter-spacing: 1px;

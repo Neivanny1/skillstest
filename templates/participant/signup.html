@@ -18,6 +18,7 @@
         <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
           <h5>{{message}}</h5>
         </div>
+        {% endfor %}
     </div>
     <h3 style="text-align: center; color: red;">PARTICIPANT SIGNUP</h3>
     <form action="{% url 'participantsignup' %}" method="POST" autocomplete="off" enctype="multipart/form-data">

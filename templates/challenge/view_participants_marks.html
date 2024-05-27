@@ -1,9 +1,10 @@
-{% extends 'facilitator/base.html' %}
+{% extends 'challenge/base.html' %}
 {% block title %}
-Question View
+Participants Marks
 {% endblock %}
+{% load static %}
+{% load widget_tweaks %}
 {% block content %}
-{%load static%}
 <head>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -12,9 +13,11 @@ Question View
     a:link {
       text-decoration: none;
     }
+
     h6 {
       text-align: center;
     }
+
     .row {
       margin: 100px;
     }
@@ -24,31 +27,27 @@ Question View
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h6 class="panel-title">Select Challenge To View Questions</h6>
+      <h6 class="panel-title">Participants</h6>
     </div>
     <table class="table table-hover" id="dev-table">
       <thead>
         <tr>
-          <th>Challenge Name</th>
-          <th>Total Question</th>
-          <th>Total Marks</th>
-          <th>View Question</th>
+          <th>Name</th>
+          <th>Profile Picture</th>
+          <th>View Marks</th>
         </tr>
       </thead>
-      {% for item in speciality %}
+      {% for t in participants %}
       <tr>
-        <td>{{ item.speciality_name }}</td>
-        <td>{{ item.question_number }}</td>
-        <td>{{ item.total_marks }}</td>
-        <td><a class="btn btn-primary btn-xs"
-          href="{% url 'viewquestion' item.id  %}">
-          <span class="glyphicon glyphicon-eye-open"></span></a></td>
+        <td> {{t.get_name}}</td>
+        <td> <img src="{% static t.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'viewmarks' t.id  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
       </tr>
       {% endfor %}
     </table>
   </div>
-  <a href="{% url 'addquestion' %}" type="button"
-  class="btn btn-primary">Add new Question</a>
+  <a href="{% url 'viewparticipants' %}" type="button"
+  class="btn btn-primary">Back</a>
 </div>
 <br><br><br><br><br><br>
 {% endblock content %}

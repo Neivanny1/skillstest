@@ -11,6 +11,7 @@ from facilitator import models as FMODEL
 from facilitator import forms as FFORM
 from participant.views import is_participant
 from participant import models as PMODEL
+from participant import forms as PFORM
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
 from django.contrib import messages
@@ -62,7 +63,7 @@ def admin_dashboard_view(request):
     }
     return render(request, 'challenge/adminDash.html', context=dict)
 
-
+# FACILITATORS HANDLING VIEWS
 '''
 Displays all facilitators details
 BOth approved and pending
@@ -141,7 +142,8 @@ def update_facilitator_view(request,pk):
     mydict={'userForm':userForm,'facilitatorForm':facilitatorForm}
     if request.method == 'POST':
         userForm = FFORM.FacilitatorUserForm(request.POST,instance=user)
-        facilitatorForm = FFORM.FacilitatorForm(request.POST,request.FILES,instance=facilitator)
+        facilitatorForm = FFORM.FacilitatorForm(request.POST,
+                                                request.FILES,instance=facilitator)
         if userForm.is_valid() and facilitatorForm.is_valid():
             user=userForm.save()
             user.set_password(user.password)
@@ -170,6 +172,89 @@ def delete_facilitator_view(request,pk):
     messages.success(request, ('Facilitator Deleted Sucessfully'))
     return HttpResponseRedirect(reverse('viewfacilitator'))
 
+# END OF FACILITATORS VIEWS
+
+# HANNDLING PARTICIPANTS VIEWS
+'''
+Viewing all participants summary
+'''
+@login_required(login_url='adminlogin')
+def view_participants_view(request):
+    dict={
+    'total_participants': PMODEL.Participant.objects.all().count(),
+    }
+    return render(request,'challenge/view_participants.html', context=dict)
+'''
+Detailed Participant view
+'''
+@login_required(login_url='adminlogin')
+def view_participant_view(request):
+    participant = PMODEL.Participant.objects.all()
+    return render(request,'challenge/view_participant.html',
+                  {'participant':participant})
+
+'''
+Updating participants details
+'''
+@login_required(login_url='adminlogin')
+def update_participant_view(request, pk):
+    participant =PMODEL.Participant.objects.get(id=pk)
+    user = PMODEL.User.objects.get(id=participant.user_id)
+    userForm = PFORM.ParticipantUserForm(instance=user)
+    participantForm = PFORM.ParticipantForm(request.FILES, instance=participant)
+    mydict={'userForm':userForm,'participantForm':participantForm}
+    if request.method == 'POST':
+        userForm = PFORM.ParticipantUserForm(request.POST,instance=user)
+        ParticipantForm = PFORM.ParticipantForm(request.POST, request.FILES,
+                                                instance=participant)
+        if userForm.is_valid() and ParticipantForm.is_valid():
+            user=userForm.save()
+            user.set_password(user.password)
+            user.save()
+            ParticipantForm.save()
+            messages.success(request, ('Participant Updated Sucessfully'))
+            return redirect(reverse('viewparticipant'))
+    return render(request,'challenge/update_participant.html',context=mydict)
+
+'''
+Delete participant
+'''
+@login_required(login_url='adminlogin')
+def delete_participant_view(request, pk):
+    participant = PMODEL.Participant.objects.get(id=pk)
+    user = User.objects.get(id=participant.user_id)
+    user.delete()
+    participant.delete()
+    messages.success(request, ('Participant deleted sucessfully..!'))
+    return HttpResponseRedirect(reverse('viewparticipant'))
+
+'''
+All participants marks
+'''
+@login_required(login_url='adminlogin')
+def view_participants_marks_view(request):
+    participants = PMODEL.Participant.objects.all()
+    return render(request,'challenge/view_participants_marks.html',
+                  {'participants':participants})
+'''
+View marks
+'''
+@login_required(login_url='adminlogin')
+def view_marks_view(request,pk):
+    speciality = models.Speciality.objects.all()
+    response =  render(request,'challenge/view_marks.html',{'speciality':speciality})
+    response.set_cookie('participant_id',str(pk))
+    return response
+'''
+Check marks
+'''
+@login_required(login_url='adminlogin')
+def check_marks_view(request,pk):
+    speciality = models.Speciality.objects.get(id=pk)
+    participant_id = request.COOKIES.get('participant_id')
+    participant= PMODEL.Participant.objects.get(id=participant_id)
+    results= models.Result.objects.all().filter(exam=speciality).filter(participant=participant)
+    return render(request,'challenge/check_marks.html',{'results':results})
 
 '''
 Handles aboout information

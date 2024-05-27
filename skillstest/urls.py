@@ -28,4 +28,13 @@ urlpatterns = [
     path('totalpayout/', views.total_payout_view, name='totalpayout'),
     path('updatefacilitator/<int:pk>', views.update_facilitator_view, name='updatefacilitator'),
     path('deletefacilitator/<int:pk>', views.delete_facilitator_view, name='deletefacilitator'),
+
+    #Handling participants
+    path('viewparticipants/', views.view_participants_view, name='viewparticipants'),
+    path('viewparticipant/', views.view_participant_view, name='viewparticipant'),
+    path('allparticipantsmarks/', views.view_participants_marks_view, name='allparticipantsmarks'),
+    path('updateparticipant/<int:pk>', views.update_participant_view, name='updateparticipant'),
+    path('deleteparticipant/<int:pk>', views.delete_participant_view, name='deleteparticipant'),
+    path('viewmarks/<int:pk>', views.view_marks_view, name='viewmarks'),
+    path('checkmarks/<int:pk>', views.check_marks_view, name='checkmarks'),
 ]

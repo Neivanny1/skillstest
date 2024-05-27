@@ -249,11 +249,11 @@ def view_marks_view(request,pk):
 Check marks
 '''
 @login_required(login_url='adminlogin')
-def check_marks_view(request,pk):
+def admincheck_marks_view(request,pk):
     speciality = models.Speciality.objects.get(id=pk)
     participant_id = request.COOKIES.get('participant_id')
     participant= PMODEL.Participant.objects.get(id=participant_id)
-    results= models.Result.objects.all().filter(exam=speciality).filter(participant=participant)
+    results= models.Result.objects.all().filter(speciality=speciality).filter(participant=participant)
     return render(request,'challenge/check_marks.html',{'results':results})
 
 '''

@@ -1,18 +1,18 @@
-{% extends 'challenge/base.html' %}
+{% extends 'participant/base.html' %}
 {% block title %}
-Check Marks
+My Marks
 {% endblock %}
-{% load static %}
-{% load widget_tweaks %}
 {% block content %}
+{%load static%}
 <head>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <style media="screen">
     a:link {
       text-decoration: none;
     }
+
     h6 {
       text-align: center;
     }
@@ -31,18 +31,18 @@ Check Marks
     <table class="table table-hover" id="dev-table">
       <thead>
         <tr>
-          <th>Challenge Name</th>
+          <th>Challenge Name</th> 
           <th>Total Marks</th>
-          <th>Attempt Number</th>
-          <th>Challenge Date</th>
+          <th>Attempt</th>
+          <th>Challenge  Date</th>
         </tr>
       </thead>
       {% for t in results %}
       <tr>
         <td> {{ t.speciality }}</td>
         <td> {{ t.marks }}</td>
-        <td>Attemp {{ forloop.counter }}</td>
-        <td> {{ t.date }}</td>  
+        <td>Attempts {{ forloop.counter }}</td>
+        <td> {{ t.date }}</td>
       </tr>
       {% endfor %}
     </table>

@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en" dir="ltr">
-
 <head>
     <title>
-        {% block title %} 
-        Skillstest | 
-        {% endblock %}
+        Skillstest | {% block title %}{% endblock %}
     </title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
@@ -37,9 +34,9 @@
     <!-- <a href="/student/student-dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
     <a href="/student/student-exam"><i class="fas fa-book"></i><span>Exam</span></a>
     <a href="/student/student-marks"><i class="fas fa-sort-numeric-up"></i><span>Marks</span></a> -->
-    <a href="#"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
-    <a href="#"><i class="fas fa-book"></i><span>Exam</span></a>
-    <a href="#"><i class="fas fa-sort-numeric-up"></i><span>Marks</span></a>
+    <a href="{% url 'participantdashboard' %}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+    <a href="{% url 'viewchallenges' %}"><i class="fas fa-book"></i><span>Challenges</span></a>
+    <a href="{% url 'viewhistory' %}"><i class="fas fa-history"></i><span>My History</span></a>
   </div>
   <!--sidebar end-->
   <!--content start-->

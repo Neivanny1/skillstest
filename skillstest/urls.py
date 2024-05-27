@@ -36,5 +36,5 @@ urlpatterns = [
     path('updateparticipant/<int:pk>', views.update_participant_view, name='updateparticipant'),
     path('deleteparticipant/<int:pk>', views.delete_participant_view, name='deleteparticipant'),
     path('viewmarks/<int:pk>', views.view_marks_view, name='viewmarks'),
-    path('checkmarks/<int:pk>', views.check_marks_view, name='checkmarks'),
+    path('admincheckmarks/<int:pk>', views.admincheck_marks_view, name='admincheckmarks'),
 ]

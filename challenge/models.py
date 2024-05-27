@@ -24,7 +24,7 @@ class Question(models.Model):
 
 class Result(models.Model):
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE)
-    challenge = models.ForeignKey(Speciality, on_delete=models.CASCADE)
+    speciality = models.ForeignKey(Speciality, on_delete=models.CASCADE)
     marks = models.PositiveIntegerField()
     date = models.DateTimeField(auto_now=True)
 def __str__(self):

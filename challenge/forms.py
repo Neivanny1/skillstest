@@ -13,7 +13,7 @@ class FacilitatorPayForm(forms.Form):
 class SpecialityForm(forms.ModelForm):
     class Meta:
         model = models.Speciality
-        fields = ['speciality_name','question_number','total_marks']
+        fields = ['speciality_name','question_number','total_marks','time_limit','free_or_paid', 'amount']
 
 class QuestionForm(forms.ModelForm):
     '''

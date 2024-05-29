@@ -1,12 +1,24 @@
 from django.db import models
-
 from participant.models import Participant
+from django.contrib.auth.models import User
 
 class Speciality(models.Model):
-   speciality_name = models.CharField(max_length=50)
-   question_number = models.PositiveIntegerField()
-   total_marks = models.PositiveIntegerField()
-   def __str__(self):
+    FREE = 0
+    PAID = 1
+    FREE_OR_PAID_CHOICES = [
+        (FREE, 'Free'),
+        (PAID, 'Paid'),
+    ]
+    speciality_name = models.CharField(max_length=50)
+    question_number = models.PositiveIntegerField()
+    total_marks = models.PositiveIntegerField()
+    time_limit = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    free_or_paid = models.PositiveIntegerField(choices=FREE_OR_PAID_CHOICES, default=FREE)
+    amount = models.PositiveIntegerField(null=True, blank=True)
+    owner_name = models.CharField(max_length=200)
+    owner_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
         return self.speciality_name
 
 class Question(models.Model):

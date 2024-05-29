@@ -38,7 +38,7 @@ My History
       {% for t in speciality %}
       <tr>
         <td> {{ t.speciality_name }}</td> 
-        <td><a class="btn btn-danger btn-xs" href="{% url 'checkmarks' t.id  %}">
+        <td><a class="btn btn-success btn-xs" href="{% url 'checkmarks' t.id  %}">
             <span class="glyphicon glyphicon-eye-open"></span></a></td>
       </tr>
       {% endfor %}

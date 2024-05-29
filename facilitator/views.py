@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from facilitator.models import Facilitator
 from .import forms
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import Group
@@ -48,12 +50,13 @@ def is_facilitator(user):
 @login_required(login_url='facilitatorlogin')
 @user_passes_test(is_facilitator)
 def facilitator_dashboard_view(request):
-    dict={
-    'total_speciality':QMODEL.Speciality.objects.all().count(),
-    'total_question':QMODEL.Question.objects.all().count(),
-    'total_participant':FMODEL.Participant.objects.all().count()
+    context = {
+        'total_speciality': QMODEL.Speciality.objects.all().count(),
+        'total_question': QMODEL.Question.objects.all().count(),
+        'total_participant': FMODEL.Participant.objects.all().count(),
     }
-    return render(request,'facilitator/dashboard.html',context=dict)
+    return render(request, 'facilitator/dashboard.html', context)
+    # return render(request,'facilitator/index.html',context=dict)
 
 '''
 To show page with both option to view

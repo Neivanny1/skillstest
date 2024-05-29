@@ -21,15 +21,11 @@
     <div class="left_area">
       <h3>Skillstest</h3>
     </div>
-    <div class="right_area">
-      <a href="{% url 'logout' %}" class="logout_btn">Logout</a>
-    </div>
   </header>
   <div class="sidebar">
     <center>
       <img src="{% static 'image/teacher.png' %}" class="profile_image" alt="">
       <h4>{{request.user.first_name}}</h4>
-      <h6 style="color: rgb(255, 255, 255);">( Facilitator )</h6>
     </center>
     <a href="{% url 'facilitatordashboard' %}"><i
       class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
@@ -37,6 +33,8 @@
       class="fas fa-book"></i><span>Challenge</span></a>
     <a href="{%url 'addorviewquestion' %}"><i
       class="fas fa-question-circle"></i><span>Questions</span></a>
+    <a href="{% url 'logout' %}"><i
+      class="fas fa-sign-out-alt"></i><span>Logout</span></a>
   </div>
   <div class="content">
     <br><br><br><br><br>

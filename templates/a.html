@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/about.css' %}">
+  <title>
+
+  </title>
+</head>
+<body>
+  <section class="about-us">
+    <div class="about">
+        <img src="{% static 'image/about.jpg' %}" class="pic" alt="About Us Image">
+        <div class="text">
+            <h2>About Us</h2>
+            <h5>Back-end Developer & <span>API DEV</span></h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur consectetur, eos provident necessitatibus reiciendis corrupti!</p>
+            <div class="data">
+                <a href="{% url 'contactus' %}" class="hire">Hire Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

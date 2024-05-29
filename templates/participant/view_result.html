@@ -20,6 +20,9 @@ My Results
     .row {
       margin: 100px;
     }
+    .container{
+      margin: 10px !important;
+    }
   </style>
 </head>
 <br><br>
@@ -38,7 +41,7 @@ My Results
       {% for t in speciality %}
       <tr>
         <td> {{ t.speciality_name }}</td>
-        <td><a class="btn btn-danger btn-xs"
+        <td><a class="btn btn-success btn-xs"
             href="{% url 'checkmarks' t.id  %}"><span 
             class="glyphicon glyphicon-eye-open"></span></a></td>
       </tr>

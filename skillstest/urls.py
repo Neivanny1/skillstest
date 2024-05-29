@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('participant/', include('participant.urls')),
     path('facilitator/', include('facilitator.urls')),
-    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
+    path('logout/', LogoutView.as_view(template_name='index.html'), name='logout'),
 
 
     # URLS FROM CHALLENGE views file

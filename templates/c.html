@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+  <script src="https://kit.fontawesome.com/c32adfdcda.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+</head>
+<body>
+  <br><br>
+  <main class="cd__main">
+    <section>
+    <div class="section-header">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            
+            <div class="contact-info-content">
+              <h4>Address</h4>
+              <p>Bamburi,<br/> Mombasa, Kenya, <br/> 80808</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            
+            <div class="contact-info-content">
+              <h4>Phone</h4>
+              <p>07871789085</p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i class="fas fa-envelope"></i>
+            </div>            
+            <div class="contact-info-content">
+              <h4>Email</h4>
+             <p>testy@gmail.com</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form method="POST" id="contact-form" autocomplete="off">
+            {% csrf_token %}
+            <h2>Send Message</h2>
+            <div class="input-box">
+                <input type="text" name="name" required>
+                <span>Full Name</span>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" required>
+                <span>Email</span>
+            </div>
+            <div class="input-box">
+                <input type="text" name="subject" required>
+                <span>Subject</span>
+            </div>
+            <div class="input-box">
+                <textarea name="message" required></textarea>
+                <span>Type your Message...</span>
+            </div>
+            <div class="input-box">
+                <input type="submit" value="Send">
+            </div>
+        </form>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+      </main>
+</body>
+</html>

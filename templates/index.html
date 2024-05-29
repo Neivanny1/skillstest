@@ -9,9 +9,10 @@
 </head>
 <body>
     {% include "navbar.html" %}
+    <br><br>
     <section class="jumbotron jumbotron-fluid">
         <div class="container text-center">
-            <h1 class="display-3">Let's Quiz</h1>
+            <h1 class="display-3">Skills Test</h1>
             <p class="lead">Test your skills and become a master.</p>
             <p>We organize quizzes on various topics.</p>
             <p>Sign up if you haven't already and get access to millions of quizzes on the topic of your interest.</p>
@@ -29,6 +30,10 @@
             </div>
         </div>
     </section>
+   
+    {% include "a.html" %}
+    {% include "c.html" %}
+    <br>
     {% include "footer.html" %}
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>

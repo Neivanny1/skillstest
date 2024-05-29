@@ -10,7 +10,7 @@ body {
 
 header {
   position: fixed;
-  background: #22242A;
+  background: #3C91E6;
   padding: 20px;
   width: 100%;
   z-index: 1;
@@ -48,7 +48,7 @@ header {
 }
 
 .sidebar {
-  background: #2f323a;
+  background: #292929;
   margin-top: 70px;
   padding-top: 30px;
   position: fixed;
@@ -81,7 +81,7 @@ header {
   padding-left: 40px;
   box-sizing: border-box;
   transition: 0.5s;
-
+  font-size: larger;
 }
 
 .sidebar a:hover {

@@ -31,6 +31,9 @@ Take Challenge
     }
   </style>
 </head>
+<script>
+  alert('Your are about to join {{ speciality.speciality_name }}');
+</script>
 <div class="container my-4">
   <div class="jumbotron">
     <form class="form shine" autocomplete="off" onsubmit="return saveAns()" action="{% url 'calculatemarks' %}" method="POST">

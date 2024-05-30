@@ -116,7 +116,8 @@ def calculate_marks_view(request):
             selected_ans = request.COOKIES.get(str(i+1))
             actual_answer = questions[i].answer
             if selected_ans == actual_answer:
-                total_marks = total_marks + questions[i].marks
+                total_marks += questions[i].marks
+        
         participant = models.Participant.objects.get(user_id=request.user.id)
         result = QMODEL.Result()
         result.marks = total_marks
@@ -124,7 +125,13 @@ def calculate_marks_view(request):
         result.participant = participant
         result.save()
 
-        return HttpResponseRedirect(reverse('viewresult'))
+        response = render(request, 'participant/view_result.html', {'marks': total_marks})
+        response.delete_cookie('speciality_id')
+        for i in range(len(questions)):
+            response.delete_cookie(str(i+1))
+        
+        return response
+    return HttpResponseRedirect(reverse('take_challenge'))
 
 '''
 View results

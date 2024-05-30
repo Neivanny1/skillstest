@@ -113,7 +113,7 @@ def approve_pending_view(request, pk):
             messages.warning(request, ('Please fill all the fields'))
         return HttpResponseRedirect(reverse('checkpending'))
     context = {
-        'f_pay': f_pay
+        'f_pay': f_pay 
         }
     messages.success(request, ('Facilitator Approved Sucessfully'))
     return render(request, 'challenge/payout.html', context)

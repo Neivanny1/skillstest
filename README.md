@@ -1,5 +1,23 @@
-#SKILLSTEST
+# SKILLSTEST
+## Skillstest Build to harness skills
 
+Skillstest is an online platform designed to facilitate learning, collaboration, and skill development. Whether you're a learner looking to enhance your knowledge, an expert willing to share your expertise, or a tutor seeking to guide others, Skillstest provides a comprehensive environment for all.
+
+### Key Features
+
+- **Test Sharing**: Share your tests and questions with the community.
+- **Skill Enhancement**: Collaborate with others to tackle challenging questions and improve your skills.
+- **Engaging Community**: Join a supportive community of learners, experts, and tutors.
+- **Personal Growth**: Discover new areas of interest, learn from others, and achieve your learning goals.
+
+## Tech Stack
+Skillstest is built using a combination of HTML, CSS, JavaScript, and Django framework with SQLite database.
+
+- **HTML**: Used for structuring the web pages and content.
+- **CSS**: Employed for styling the user interface and enhancing the aesthetics.
+- **JavaScript**: Provides interactivity and dynamic behavior to the web pages.
+- **Django**: Powers the backend logic and facilitates server-side operations.
+- **SQLite**: Serves as the database management system for storing application data.
 
 ### Requirements to run the project <br>
 <strong>Kindly make sure you have following before proceeding to installation</strong> <br>

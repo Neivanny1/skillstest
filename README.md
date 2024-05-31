@@ -38,7 +38,7 @@ Skillstest is built using a combination of HTML, CSS, JavaScript, and Django fra
 Visit 127.0.0.1:8000 on your browser
 
 
-### Platform build to harness skills
+### DEMO
 <h2>LANDING PAGE SECTION</h2>
 <br> <br><img src="https://github.com/Neivanny1/skillstest/blob/main/static/screenshots/home.png" alt="Description of the embedded content"> <br> <br>
 <h2> SIGNUP PAGE SECTION </h2> 

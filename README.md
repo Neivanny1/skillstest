@@ -1,4 +1,24 @@
-## SKILLSTEST
+#SKILLSTEST
+
+
+### Requirements to run the project <br>
+<strong>Kindly make sure you have following before proceeding to installation</strong> <br>
+1. Python 
+2. Text editor, VS code recommended
+3. Git
+5. Pip
+
+### Installation <br>
+<strong>git clone https://github.com/Neivanny1/skillstest.git</strong> <br>
+<strong>cd skillstest</strong> <br>
+<strong>python3 -m venv venv </strong> <br>
+<strong>source venv/bin/activate</strong> <br>
+<strong>pip install -r requirements </strong> <br>
+<strong>python3 manage.py makemigrations</strong> <br>
+<strong>python3 manage.py migrate</strong> <br>
+<strong>python3 manage.py runserver</strong> <br><br><br>
+Visit 127.0.0.1:8000 on your browser
+
 
 ### Platform build to harness skills
 <h2>LANDING PAGE SECTION</h2>

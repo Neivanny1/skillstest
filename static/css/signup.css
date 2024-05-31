@@ -44,6 +44,10 @@ h3 {
     background-color: #17a2b8;
     border-color: #17a2b8;
 }
+.text-danger {
+    color: #ff3860; /* Red color for errors */
+    margin-top: 5px;
+}
 .msg {
     margin-top: 20px;
 }

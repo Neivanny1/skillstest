@@ -7,7 +7,7 @@ Skillstest is an online platform designed to facilitate learning, collaboration,
 
 - **Test Sharing**: Share your tests and questions with the community.
 - **Skill Enhancement**: Collaborate with others to tackle challenging questions and improve your skills.
-- **Engaging Community**: Join a supportive community of learners, experts, and tutors.
+- **Engaging Community**: Join a supportive community of learners, experts, and tutors. NOT IMPLEMETED YET
 - **Personal Growth**: Discover new areas of interest, learn from others, and achieve your learning goals.
 
 ## Tech Stack

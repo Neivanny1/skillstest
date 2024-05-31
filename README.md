@@ -19,24 +19,30 @@ Skillstest is built using a combination of HTML, CSS, JavaScript, and Django fra
 - **Django**: Powers the backend logic and facilitates server-side operations.
 - **SQLite**: Serves as the database management system for storing application data.
 
-### Requirements to run the project <br>
-<strong>Kindly make sure you have following before proceeding to installation</strong> <br>
-1. Python 
-2. Text editor, VS code recommended
-3. Git
-5. Pip
+## Requirements to run the project <br>
+Kindly make sure you have following before proceeding to installation.
+- **1.** Python 
+- **2.** Text editor, VS code recommended
+- **3.** Git
+- **5.** Pip
 
-### Installation <br>
-<strong>git clone https://github.com/Neivanny1/skillstest.git</strong> <br>
-<strong>cd skillstest</strong> <br>
-<strong>python3 -m venv venv </strong> <br>
-<strong>source venv/bin/activate</strong> <br>
-<strong>pip install -r requirements </strong> <br>
-<strong>python3 manage.py makemigrations</strong> <br>
-<strong>python3 manage.py migrate</strong> <br>
-<strong>python3 manage.py runserver</strong> <br><br><br>
+## Installation
+- **ubuntu@user:** git clone https://github.com/Neivanny1/skillstest.git
+- **ubuntu@user:** cd skillstest
+- **ubuntu@user:** python3 -m venv venv
+- **ubuntu@user:** source venv/bin/activate
+- **ubuntu@user:** pip install -r requirements
+- **ubuntu@user:** python3 manage.py makemigrations
+- **ubuntu@user:** python3 manage.py migrate
+- **ubuntu@user:** python3 manage.py runserver
+
+  
 Visit 127.0.0.1:8000 on your browser
 
+## Contribution
+Having issues with code or fixess to add feel free to fork the project and create a PR will review soon as recieved
+## AUTHOR
+Eric MWakazi
 
 ### DEMO
 <h2>LANDING PAGE SECTION</h2>
@@ -61,15 +67,3 @@ Visit 127.0.0.1:8000 on your browser
 <br> <br><img  src="https://github.com/Neivanny1/skillstest/blob/main/static/screenshots/add-challenge.PNG" alt="Description of the embedded content"> <br> <br>
 <h2>ADD QUESTIONS</h2> 
 <br> <br><img src="https://github.com/Neivanny1/skillstest/blob/main/static/screenshots/add-question.PNG" alt="Description of the embedded content"> <br> <br>
-
-
-### Installation <br>
-<strong>git clone https://github.com/Neivanny1/skillstest.git</strong> <br>
-<strong>cd skillstest</strong> <br>
-<strong>python3 -m venv venv </strong> <br>
-<strong>source venv/bin/activate</strong> <br>
-<strong>pip install -r requirements </strong> <br>
-<strong>python3 manage.py makemigrations</strong> <br>
-<strong>python3 manage.py migrate</strong> <br>
-<strong>python3 manage.py runserver</strong> <br><br><br>
-Visit 127.0.0.1:8000 on your browser

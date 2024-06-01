@@ -12,6 +12,88 @@
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <style>
+
+      .row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+      }
+
+      .col-md-4, .col-xl-4 {
+          flex: 1;
+          max-width: 300px;
+          margin: 15px;
+      }
+
+      .card {
+          position: relative;
+          overflow: hidden;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s, box-shadow 0.3s;
+          border: none;
+      }
+
+      .card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .card::before {
+          content: "";
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%);
+          transform: rotate(45deg);
+          transition: opacity 0.3s;
+          opacity: 0;
+          pointer-events: none;
+      }
+
+      .card:hover::before {
+          opacity: 1;
+      }
+
+      .bg-c-green {
+          background: linear-gradient(45deg, #34e89e, #0f3443);
+      }
+
+      .bg-c-yellow {
+          background: linear-gradient(45deg, #f6d365, #fda085);
+      }
+
+      .bg-c-pink {
+          background: linear-gradient(45deg, #f093fb, #f5576c);
+      }
+
+      .order-card h6 {
+          margin-bottom: 20px;
+          font-size: 1.2em;
+          color: #fff;
+      }
+
+      .order-card h2 {
+          font-size: 2.5em;
+          color: #fff;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+
+      .order-card i {
+          font-size: 3em;
+          color: rgba(255, 255, 255, 0.7);
+      }
+
+      .order-card span {
+          font-size: 2.5em;
+      }
+  </style>
   </head>
 <br><br>
   <div class="container">

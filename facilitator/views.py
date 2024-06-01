@@ -91,22 +91,6 @@ def add_challenge_view(request):
         'specialityForm': specilaityForm
     }
     return render(request,'facilitator/add_challenge.html', context)
-# @login_required(login_url='facilitatorlogin')
-# @user_passes_test(is_facilitator)
-# def add_challenge_view(request):
-#     specilaityForm = QFORM.SpecialityForm()
-#     if request.method == 'POST':
-#         specilaityForm = QFORM.SpecialityForm(request.POST)
-#         if specilaityForm.is_valid():        
-#             specilaityForm.save()
-#         else:
-#             messages.warning(request, ('Please fill all the fields'))
-#             return HttpResponseRedirect(reverse('add_or_view_challenge'))
-#         return HttpResponseRedirect(reverse('viewchallenge'))
-#     context = {
-#         'specialityForm': specilaityForm
-#     }
-#     return render(request,'facilitator/add_challenge.html', context)
 
 '''
 View total challenges they have uploaded

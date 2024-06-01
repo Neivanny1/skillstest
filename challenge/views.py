@@ -105,31 +105,55 @@ def approve_pending_view(request, pk):
     if request.method == 'POST':
         f_pay = forms.FacilitatorPayForm(request.POST)
         if f_pay.is_valid():
-            f = FMODEL.Facilitator.objects.get(id=pk)
-            f.salary = f_pay.cleaned_data['salary']
-            f.status = True
-            f.save()
+            facilitator = FMODEL.Facilitator.objects.get(id=pk)
+            facilitator.salary = f_pay.cleaned_data['salary']
+            facilitator.status = True
+            facilitator.save()
+            
+            subject = 'Account Approval'
+            message = 'http://127.0.0.1:8000/facilitator/facilitatorlogin/'
+            recv_email = facilitator.email
+            full_message = f"From Admin\n\nYour account has been approved successfully. Kindly visit {message} to login."
+            mail_notifications(subject, recv_email, full_message)
+
+            messages.success(request, 'Facilitator Approved Successfully')
+            return HttpResponseRedirect(reverse('checkpending'))
         else:
-            messages.warning(request, ('Please fill all the fields'))
-        return HttpResponseRedirect(reverse('checkpending'))
+            messages.warning(request, 'Please fill all the fields')
+    else:
+        facilitator = FMODEL.Facilitator.objects.get(id=pk)
+    
     context = {
         'f_pay': f_pay 
-        }
-    messages.success(request, ('Facilitator Approved Sucessfully'))
+    }
+    
     return render(request, 'challenge/payout.html', context)
 
-'''
-Rejecting approvals
-'''
+def mail_notifications(subject, recv_email, full_message):
+    if recv_email and subject and full_message:
+        try:
+            send_mail(subject,
+                      full_message,
+                      settings.EMAIL_HOST_USER,
+                      [recv_email],
+                      fail_silently=False)
+        except Exception as e:
+            return render(None, 'onfail.html')
+
 @login_required(login_url='adminlogin')
 def reject_pending_view(request, pk):
     facilitator = FMODEL.Facilitator.objects.get(id=pk)
     user = User.objects.get(id=facilitator.user_id)
     user.delete()
     facilitator.delete()
-    messages.success(request, ('Facilitator Rejected Sucessfully'))
-    return HttpResponseRedirect(reverse('checkpending'))
+    
+    subject = 'Account Approval Denied'
+    recv_email = facilitator.email
+    full_message = f"From Admin\n\nYour account has been rejected as it didn't meet the set standards."
+    mail_notifications(subject, recv_email, full_message)
 
+    messages.success(request, 'Facilitator Rejected Successfully')
+    return HttpResponseRedirect(reverse('checkpending'))
 '''
 Updating facilitators details
 '''

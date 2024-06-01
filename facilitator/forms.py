@@ -17,4 +17,4 @@ class FacilitatorUserForm(forms.ModelForm):
 class FacilitatorForm(forms.ModelForm):
     class Meta:
         model=models.Facilitator
-        fields=['address','mobile','profile_pic']
+        fields=['address','email','mobile','profile_pic']

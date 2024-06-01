@@ -7,7 +7,7 @@ Generating signup form
 class ParticipantUserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields=['first_name','last_name','username','password']
+        fields=['first_name','last_name','username','email','password']
         widgets = {
         'password': forms.PasswordInput()
         }
@@ -15,4 +15,4 @@ class ParticipantUserForm(forms.ModelForm):
 class ParticipantForm(forms.ModelForm):
     class Meta:
         model = models.Participant
-        fields = ['address','mobile','profile_pic']
+        fields = ['address','email','mobile','profile_pic']

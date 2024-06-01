@@ -45,16 +45,21 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                {% render_field participantForm.email|attr:'required:true' class="form-control" placeholder="Email" %}
+            </div>
+            <div class="form-group col-md-6">
                 <label for="mobile">Mobile</label>
                 {% render_field participantForm.mobile|attr:'required:true' class="form-control" placeholder="Mobile" %}
             </div>
+
+        </div>
+        <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="address">Address</label>
                 {% render_field participantForm.address|attr:'required:true' class="form-control" placeholder="Address" %}
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-6">
                 <label for="profile_pic">Profile Picture</label>
                 {% render_field participantForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
             </div>

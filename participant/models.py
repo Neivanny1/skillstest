@@ -9,8 +9,10 @@ class Participant(models.Model):
     Defines a class participants
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
     profile_pic = models.ImageField(upload_to="profile_pic/participant", null=True, blank=True)
     address = models.CharField(max_length=60)
+    email = models.CharField(max_length=200, null=False)
     mobile = models.CharField(max_length=20,null=False)
 
     @property

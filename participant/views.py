@@ -124,14 +124,7 @@ def calculate_marks_view(request):
         result.speciality = speciality
         result.participant = participant
         result.save()
-
-        response = render(request, 'participant/view_result.html', {'marks': total_marks})
-        response.delete_cookie('speciality_id')
-        for i in range(len(questions)):
-            response.delete_cookie(str(i+1))
-        
-        return response
-    return HttpResponseRedirect(reverse('take_challenge'))
+        return HttpResponseRedirect(reverse('viewresult'))
 
 '''
 View results

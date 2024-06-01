@@ -38,7 +38,7 @@ Available Challenges
       {% for t in speciality %}
       <tr>
         <td> {{t.speciality_name}}</td>
-        <td><a class="btn btn-success btn-xs" href="{% url 'joinchallenge' t.id  %}"><span class="glyphicon glyphicon-circle-arrow-right"></span></a></td>
+        <td><a class="btn btn-success btn-xs" href="{% url 'joinchallenge' t.id  %}"><span class="glyphicon glyphicon-circle-arrow-right"></span>Join</a></td>
       </tr>
       {% endfor %}
     </table>

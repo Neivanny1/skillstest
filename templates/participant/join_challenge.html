@@ -6,50 +6,133 @@ Join Challenge
 
 {% block content %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            margin-left: 30px;
+        }
+        .heading {
+            text-align: center;
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 30px;
+        }
 
-<head>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <style>
-    .shine {
-        font-size: larger;
-        font-weight: 100;
-    }
-    .instr {
-        font-size: 50px;
-        font-weight: 200;
-    }
-  </style>
-</head>
+        .settings {
+            margin-bottom: 30px;
+        }
 
-<br><br>
-<div class="container my-4">
-    <div class="jumbotron">
-        <h3 class="text-info text-center instr ">{{ speciality.speciality_name }} Details</h3>
-        <div class="row">
-            <div class="card border-info mx-4 my-4 shine"> <!-- Add 'shine' class for shine effect -->
-                <div class="card-body text-info">
-                    <h4 class="card-title instr">Below Are {{ speciality.speciality_name }} details</h4>
-                    <ul style="list-style: decimal;">
-                        <li>Challenge Name : {{ speciality.speciality_name }}</li>
-                        <li>Total Question : {{ total_questions }}</li>
-                        <li>Total Marks : {{ total_marks }}</li>
-                        <li>Type : {% if speciality.free_or_paid  == 0 %} FREE {% else %} PAID {% endif %}</li>
-                        <li>Amount : {{ speciality.amount }}</li>
-                        <li>Time Limit : {{ speciality.time_limit }}</li>
-                        <li>Instructor : {{ speciality.owner_name }}</li>
-                    </ul>
-                    <h4 class="card-title instr">INSTRUCTIONS: <br> Kindly read carefully..!!</h4>
-                    <ul style="list-style: disc;">
-                        <li>Below are question set to meet regulated standards, for effective learning kindly avoid cheating and do your own work</li>
-                    </ul>
-                    <a href="{% url 'startchallenge' speciality.id  %}" style="font-size: larger;" class="btn btn-success">Start {{ speciality.speciality_name }}</a>
-                </div>
-            </div>  
-        </div>  
+        .settings h4 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .settings ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .settings ul li {
+            margin: 10px 0;
+            font-size: 1.1em;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .settings ul li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #0c80ef;
+        }
+
+        .btn {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(90deg, #0c80ef, #4a00e0);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            text-align: center;
+            line-height: 50px;
+            display: block;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #4a00e0, #0c80ef);
+        }
+
+        .btn a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+
+        @media (max-width: 468px) {
+            .container {
+                padding: 20px;
+            }
+
+            .heading {
+                font-size: 2em;
+            }
+
+            .settings ul li {
+                font-size: 1em;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="start-screen">
+        <h1 class="heading">{{ speciality.speciality_name }}</h1>
+        <div class="settings">
+          <h4>Below Are {{ speciality.speciality_name }} details</h4>
+          <ul>
+              <li>Challenge Name : {{ speciality.speciality_name }}</li>
+              <li>Total Questions : {{ total_questions }}</li>
+              <li>Total Marks : {{ total_marks }}</li>
+              <li>Type : {% if speciality.free_or_paid == 0 %} FREE {% else %} PAID {% endif %}</li>
+              <li>Amount : {% if speciality.amount == 0 %} No cost {% else %} {{ speciality.amount }} {% endif %}</li>
+              <li>Time Limit : {% if speciality.time_limit == 0 %} N/A {% else %} {{ speciality.time_limit }} {% endif %}</li>
+              <li>Instructor : {{ speciality.owner_name }}</li>
+          </ul>
+        </div>
+        <button class="btn start"><a href="{% url 'startchallenge' speciality.id %}">Start {{ speciality.speciality_name }}</a></button>
+      </div>
     </div>
-</div>
-
-<br><br><br><br><br><br>
+  </body>
+</html>
 {% endblock content %}

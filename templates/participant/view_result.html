@@ -26,9 +26,6 @@ My Results
   </style>
 </head>
 <br><br>
-<script>
-  alert('Total score: {{ marks }}');
-</script>
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
@@ -45,7 +42,7 @@ My Results
       <tr>
         <td> {{ t.speciality_name }}</td>
         <td><a class="btn btn-success btn-xs"
-            href="{% url 'checkmarks' t.id  %}"><span 
+            href="{% url 'checkmarks' t.id  %}"> View Marks <span 
             class="glyphicon glyphicon-eye-open"></span></a></td>
       </tr>
       {% endfor %}

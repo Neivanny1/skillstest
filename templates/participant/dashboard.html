@@ -102,17 +102,21 @@ Participant Dashboard
       <div class="col-md-4 col-xl-6">
         <div class="card bg-c-yellow order-card">
           <div class="card-block">
+            <a href="{% url 'viewchallenges' %}">
             <h6 class="m-b-20">Active Challenges</h6>
            <h2 class="text-right"><i class="fas fa-book f-left"></i>
             <span>{{ total_speciality}}</span></h2>
+           </a>
           </div>
         </div>
       </div>
       <div class="col-md-4 col-xl-6">
         <div class="card bg-c-pink order-card">
           <div class="card-block">
+            <a href="{% url 'viewchallenges' %}">
             <h6 class="m-b-20">Total Questions</h6>
-            <h2 class="text-right"><i class="fas fa-question-circle f-left"></i><span>{{total_question}}</span></h2>  
+            <h2 class="text-right"><i class="fas fa-question-circle f-left"></i><span>{{total_question}}</span></h2>
+            </a>
           </div>
         </div>
       </div>

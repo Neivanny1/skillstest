@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from . import models
-
+'''
+A from for capturing data from contact us page
+'''
 class ContactusForm(forms.Form):
     Name = forms.CharField(max_length=30)
     Email = forms.EmailField()

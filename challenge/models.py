@@ -2,6 +2,10 @@ from django.db import models
 from participant.models import Participant
 from django.contrib.auth.models import User
 
+
+'''
+Class that defines a table in db to stored challenges uploaded
+'''
 class Speciality(models.Model):
     FREE = 0
     PAID = 1
@@ -21,6 +25,9 @@ class Speciality(models.Model):
     def __str__(self):
         return self.speciality_name
 
+'''
+Class that defines a table in db to stored questions uploaded
+'''
 class Question(models.Model):
     speciality = models.ForeignKey(Speciality, on_delete=models.CASCADE)
     marks =models.PositiveIntegerField()
@@ -34,6 +41,10 @@ class Question(models.Model):
     def __str__(self):
         return f"Question: {self.question}, Marks: {self.marks}, Options: [{self.option1}, {self.option2}, {self.option3}, {self.option4}], Answer: {self.answer}"
 
+
+'''
+Class that defines a table in db to stored scores for participants
+'''
 class Result(models.Model):
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE)
     speciality = models.ForeignKey(Speciality, on_delete=models.CASCADE)

@@ -1,9 +1,9 @@
-'''
-Creates a table for facilitator
-'''
 from django.db import models
 from django.contrib.auth.models import User
 
+'''
+Class that defines a table in db to stored registered facilitators
+'''
 class Facilitator(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     email = models.CharField(max_length=200)

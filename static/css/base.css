@@ -5,7 +5,7 @@ a:link {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Gill Sans", sans-serif;;
+  font-family: "Gill Sans", sans-serif;
 }
 
 header {
@@ -40,7 +40,6 @@ header {
   font-weight: 600;
   color: #fff;
   transition: 0.5s;
-
 }
 
 .logout_btn:hover {
@@ -69,7 +68,6 @@ header {
 .sidebar h4 {
   color: #ccc;
   margin-top: 0;
-  
 }
 
 .sidebar a {
@@ -137,4 +135,27 @@ label #sidebar_btn:hover {
 
 #check {
   display: none;
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -250px;
+  }
+  
+  #check:checked ~ .sidebar {
+    left: 0;
+  }
+  
+  .content {
+    margin-left: 0;
+  }
+  
+  #check:checked ~ .content {
+    margin-left: 250px;
+  }
+  
+  label #sidebar_btn {
+    left: 20px;
+  }
 }

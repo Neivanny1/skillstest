@@ -35,12 +35,20 @@ Kindly make sure you have following before proceeding to installation.
 - **ubuntu@user:** python3 manage.py makemigrations
 - **ubuntu@user:** python3 manage.py migrate
 - **ubuntu@user:** python3 manage.py runserver
+## Running Tests
+- **ubuntu@user:** python3 manage.py test
 
-  
+
 Visit 127.0.0.1:8000 on your browser
 
 ## Contribution
-Having issues with code or fixess to add feel free to fork the project and create a PR will review soon as recieved
+Having issues with code or proposing a fix or bug to address
+Easy follow below procedure
+-**1**: Fork the project.
+-**2**: Create a branch with name of error you addressing.
+-**3**: NB remember to add test where possible.
+-**4**: Push you changes I will review it soon as possible.
+
 ## AUTHOR
 Eric MWakazi
 

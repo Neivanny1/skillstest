@@ -16,7 +16,9 @@
   height: 100vh;
   width: 100%;
   padding: 90px 0;
-  background-color: rgba(0,0,0,0.8);
+  color: rgba(0,0,0,0.8);
+  background-image: url(https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) !important;
+  
 }
 .pic {
   height: auto;
@@ -50,7 +52,7 @@ span {
   color: #4070f4;
 }
 .text p {
-  color: ghostwhite;
+  color: rgba(0,0,0,0.8);
   font-size: 18px;
   line-height: 25px;
   letter-spacing: 1px;

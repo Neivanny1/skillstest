@@ -1,5 +1,5 @@
 # SKILLSTEST
-## Skillstest Build to harness skills
+## SkillsTest Build to harness skills
 
 Skillstest is an online platform designed to facilitate learning, collaboration, and skill development. Whether you're a learner looking to enhance your knowledge, an expert willing to share your expertise, or a tutor seeking to guide others, Skillstest provides a comprehensive environment for all.
 

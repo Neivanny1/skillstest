@@ -120,6 +120,6 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'Skillstest'
 # VARIABLES
-EMAIL_HOST_USER = os.getenv('email_host_user', "")
-EMAIL_HOST_PASSWORD = os.getenv('email_host_pass', "")
-SECRET_KEY = os.getenv('secret_key', "")
+EMAIL_HOST_USER = os.environ.get('email_host_user')
+EMAIL_HOST_PASSWORD = os.environ.get('email_host_pass')
+SECRET_KEY = os.environ.get('secret_key')

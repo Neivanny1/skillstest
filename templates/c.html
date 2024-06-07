@@ -59,29 +59,7 @@
           </div>
         </div>
         <div class="contact-form">
-          <form method="POST" id="contact-form" autocomplete="off">
-            {% csrf_token %}
-            <h2>Send Message</h2>
-            <div class="input-box">
-                <input type="text" name="name" required>
-                <span>Full Name</span>
-            </div>
-            <div class="input-box">
-                <input type="email" name="email" required>
-                <span>Email</span>
-            </div>
-            <div class="input-box">
-                <input type="text" name="subject" required>
-                <span>Subject</span>
-            </div>
-            <div class="input-box">
-                <textarea name="message" required></textarea>
-                <span>Type your Message...</span>
-            </div>
-            <div class="input-box">
-                <input type="submit" value="Send">
-            </div>
-        </form>
+          <a href="{% url 'contactus' %}" class="btn btn-primary btn-lg">Email us</a>
         </div>
         
       </div>

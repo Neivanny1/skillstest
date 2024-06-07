@@ -3,11 +3,11 @@
     "builds": [
       {
         "src": "skillstest/wsgi.py",
-        "use": "@vercel/python",
+        "use": "@vercel/python3",
         "config": { "maxLambdaSize": "15mb", "runtime": "python3" }
       },
       {
-        "src": "build_files.sh",
+        "src": "build.sh",
         "use": "@vercel/static-build",
         "config": {
           "distDir": "staticfiles_build"

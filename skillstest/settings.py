@@ -90,11 +90,11 @@ DATABASES = {
 
     'default': {
 
-        'ENGINE': os.environ.get('django.db.backends.postgresql'),
-        'NAME': os.environ.get('uumkclxo'),
-        'USER': os.environ.get('uumkclxo'),
-        'PASSWORD': os.environ.get('q3g1vCa_SPAt4Rzy2s71qr8rCWS2qJ27'),
-        'HOST': os.environ.get('kala.db.elephantsql.com'),
+        'ENGINE': os.getenv('django.db.backends.postgresql'),
+        'NAME': os.getenv('uumkclxo'),
+        'USER': os.getenv('uumkclxo'),
+        'PASSWORD': os.getenv('q3g1vCa_SPAt4Rzy2s71qr8rCWS2qJ27'),
+        'HOST': os.getenv('kala.db.elephantsql.com'),
         # 'PORT': '6625',
 
     }
@@ -133,6 +133,6 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'Skillstest'
 # VARIABLES
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-SECRET_KEY = os.environ.get('SECRET_KEY')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+SECRET_KEY = os.getenv('SECRET_KEY')

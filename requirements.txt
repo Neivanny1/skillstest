@@ -5,6 +5,6 @@ pytz==2020.1
 sqlparse==0.3.1
 Pillow
 python-dotenv
-psycopg2==2.8.6
+psycopg2-binary==2.8.6
 whitenoise
 setuptools

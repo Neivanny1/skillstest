@@ -1,3 +1,3 @@
-python3 -m pip install --upgrade setuptools
-pip3 install -r requirements.txt
+python3 -m pip install setuptools
+python3 -m pip install -r requirements.txt
 python3 manage.py collectstatic

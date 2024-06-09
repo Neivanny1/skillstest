@@ -1,5 +1,6 @@
-Today night Friday
-implement challenge reject, delete and update facilitator
-NB:
-FLash messages not working
-facilitator should only see participants who are taking their challenge
+Change the login screen layout
+Change signup page
+Change login and signup process
+Enforce input validation signup page
+Change dashboard layout
+Colour maintainace

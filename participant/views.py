@@ -12,12 +12,12 @@ Home view
 '''
 def participanthome(request):
     current_time = datetime.now()
-    context = {
+    time = {
         'current_time': current_time
     }
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse('afterlogin'))
-    return render(request, 'participant/home.html', context)
+    return render(request, 'participant/home.html', context= time)
 
 '''
 Signup view

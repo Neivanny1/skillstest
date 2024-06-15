@@ -8,3 +8,4 @@ python-dotenv
 psycopg2-binary
 whitenoise
 setuptools
+django-crispy-forms

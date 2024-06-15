@@ -15,4 +15,4 @@ class ParticipantUserForm(forms.ModelForm):
 class ParticipantForm(forms.ModelForm):
     class Meta:
         model = models.Participant
-        fields = ['address','email','mobile','profile_pic']
+        fields = ['address','email','mobile']

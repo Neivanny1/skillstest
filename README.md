@@ -17,7 +17,7 @@ Skillstest is built using a combination of HTML, CSS, JavaScript, and Django fra
 - **CSS**: Employed for styling the user interface and enhancing the aesthetics.
 - **JavaScript**: Provides interactivity and dynamic behavior to the web pages.
 - **Django**: Powers the backend logic and facilitates server-side operations.
-- **SQLite**: Serves as the database management system for storing application data.
+- **Postgres**: Serves as the database management system for storing application data.
 
 ## Requirements to run the project <br>
 Kindly make sure you have following before proceeding to installation.

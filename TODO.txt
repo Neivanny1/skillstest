@@ -4,3 +4,4 @@ Change login and signup process
 Enforce input validation signup page
 Change dashboard layout
 Colour maintainace
+mails not sending
